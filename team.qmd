@@ -1,5 +1,5 @@
 ---
-title: "VAST Challenge 2025 - Mini Challenge 3"
+title: "About The Team"
 author: "Vanessa Riadi, Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer)"
 date: "June 8, 2025"
 date-modified: "last-modified"
