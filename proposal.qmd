@@ -42,6 +42,7 @@ Refer to [Appendix A](#appendixa) for a detailed breakdown of the dataset.
 # 4. Methodology & Analytical Approach
 
 ## 4.1. Data Preparation & EDA
+
 For this project, the following approaches will be taken by the team:
 
 -   **Exploring Graph Structure:** Understanding the types, subtypes, and attributes of nodes and edges.
@@ -71,6 +72,7 @@ This is to solve:
 -   **Q3a–b**: Who is hiding behind pseudonyms, and what can we infer about their real identities?
 
 Key methods include:
+
 -   **Graph-Based Clustering:** Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.
 -   **Topic Labeling by Cluster:** Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.
 -   **Pseudonym Detection:** Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.
@@ -81,6 +83,7 @@ Key methods include:
 This is to solve **Q4a–b**: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus 
 
 Highlights of the investigation:
+
 -   **Communication Summary:** Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.
 -   **Temporal Drilldown:** Daily and hourly plots showing Nadia’s communication spikes during key event dates.
 -   **Content Analysis:** Keyword extraction by date, showing shifting language from planning → construction → cover-up.
