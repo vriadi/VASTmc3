@@ -1,0 +1,98 @@
+---
+title: "Project Proposal"
+author: "Vanessa Riadi, Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer)"
+date: "June 8, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    prefer-html: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+# 1. Motivation
+
+This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.
+
+Led by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story.
+
+# 2. Objectives
+
+The objective of this report is to analyze intercepted radio communications over a two-week period to uncover patterns, relationships, and potentially illicit activities among people and vessels operating in Oceanus. Using a knowledge graph and visual analytics, the investigation aims to:
+
+1. Identify daily temporal communication patterns and their evolution.
+2. Detect and interpret relationship clusters among individuals and vessels, based on shared communication or common topics.
+3. Uncover the use of pseudonyms and determine real identities or recurring patterns behind them.
+4. Evaluate the activities of Nadia Conti for potential ongoing illegal behavior.
+
+The ultimate goal is to assist Clepper in gaining actionable insights into key actors, their interactions, and suspicious behaviors within the Oceanus network.
+
+# 3. Data 
+
+The primary dataset for this project is a knowledge graph constructed from intercepted radio communications collected over a two-week period in Oceanus. In this graph, each node represents an entity—such as a person, vessel, pseudonym, or organization—while the edges represent interactions or co-occurrences in communications. Each edge carries contextual attributes such as the timestamp, message topic, communication type, and potential pseudonym use.
+
+Additional contextual data from the Mini Challenge background supports the analysis, including:
+- Entity affiliations and roles (e.g., Green Guardians, Sailor Shift’s entourage).
+- Identified pseudonyms (e.g., “Boss”, “The Lookout”).
+- Records of previous illicit activities (e.g., Nadia Conti’s involvement).
+
+Refer to [Appendix A](#appendixa) for a detailed breakdown of the dataset.
+
+# 4. Methodology & Analytical Approach
+For this project, the following approaches will be taken by the team:
+
+1. Data Preparation:
+
+2. 
+
+3. 
+
+4. Time Series Analysis and Social Network graph: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus 
+
+# 5. Prototype
+
+The prototype is splitted as follows:
+
+- [Identify temporal communication patterns and shifts and network influence](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+- [Key interactions and relationships among individuals and vessels, detecting communication clusters, and identifying pseudonym usage](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+- [Time Series Analysis and Social Network graph](https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+
+For detail, please refer to [Prototype tab](prototype.html)
+
+# 6. Storyboard
+To support our investigation, we have designed and developed a prototype that visually outlines the structure of the R Shiny Application. This storyboard illustrates both the user interface (UI) layout and the corresponding server-side logic, offering a clear representation of how shareholders in Oceanus interact with the visual analytics workflow.
+
+For detail, please refer to [Storyboard page](storyboard.html)
+
+# 7. Packages 
+
+To leverage the investigation, the following R packages has been used:
+
+- tidyverse
+- lubridate
+ -igraph
+- ggraph
+- wordcloud
+- tidytext
+- stopwords
+- dplyr
+- tibble
+- visNetwork
+- stringr
+- knitr
+- ggplot2
+- readr
+- jsonlite
+- janitor
+- forcats
+- ggrepel
+
+# 8. Appendix
+
+## 8.1 Appendix A {#appendixa}
+
+![](data/MC3_data_description.pdf){fig-align="center" width="700" height="350"}

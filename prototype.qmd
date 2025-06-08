@@ -1,0 +1,18 @@
+---
+title: "Prototype"
+author: "Vanessa Riadi, Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer)"
+date: "June 8, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    prefer-html: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+# WIP
+

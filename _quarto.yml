@@ -5,9 +5,16 @@ website:
   title: "VASTmc3"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.html
         text: Home
-      - about.qmd
+      - href: team.html
+        text: Team
+      - href: proposal.html
+        text: Proposal
+      - href: storyboard.html
+        text: Storyboard
+      - href: prototype.html
+        text: Prototype
 
 format:
   html:
