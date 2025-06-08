@@ -24,103 +24,107 @@ Led by investigative journalist Clepper Jessen, the case revolves around interce
 
 The objective of this report is to analyze intercepted radio communications over a two-week period to uncover patterns, relationships, and potentially illicit activities among people and vessels operating in Oceanus. Using a knowledge graph and visual analytics, the investigation aims to:
 
-1. Identify daily temporal communication patterns and their evolution.
-2. Detect and interpret relationship clusters among individuals and vessels, based on shared communication or common topics.
-3. Uncover the use of pseudonyms and determine real identities or recurring patterns behind them.
-4. Evaluate the activities of Nadia Conti for potential ongoing illegal behavior.
+1.  Identify daily temporal communication patterns and their evolution.
+2.  Detect and interpret relationship clusters among individuals and vessels, based on shared communication or common topics.
+3.  Uncover the use of pseudonyms and determine real identities or recurring patterns behind them.
+4.  Evaluate the activities of Nadia Conti for potential ongoing illegal behavior.
 
 The ultimate goal is to assist Clepper in gaining actionable insights into key actors, their interactions, and suspicious behaviors within the Oceanus network.
 
-# 3. Data 
+# 3. Data
 
 The primary dataset for this project is a knowledge graph constructed from intercepted radio communications collected over a two-week period in Oceanus. In this graph, each node represents an entity—such as a person, vessel, pseudonym, or organization—while the edges represent interactions or co-occurrences in communications. Each edge carries contextual attributes such as the timestamp, message topic, communication type, and potential pseudonym use.
 
-Additional contextual data from the Mini Challenge background supports the analysis, including:
-- Entity affiliations and roles (e.g., Green Guardians, Sailor Shift’s entourage).
-- Identified pseudonyms (e.g., “Boss”, “The Lookout”).
-- Records of previous illicit activities (e.g., Nadia Conti’s involvement).
+Additional contextual data from the Mini Challenge background supports the analysis, including: - Entity affiliations and roles (e.g., Green Guardians, Sailor Shift’s entourage). - Identified pseudonyms (e.g., “Boss”, “The Lookout”). - Records of previous illicit activities (e.g., Nadia Conti’s involvement).
 
 Refer to [Appendix A](#appendixa) for a detailed breakdown of the dataset.
 
 # 4. Methodology & Analytical Approach
+
+## 4.1. Data Preparation & EDA
 For this project, the following approaches will be taken by the team:
 
-## 4.1. Data Preparation
-To support all subsequent analysis, we first transformed the raw knowledge graph into a tidy, analysis-ready format. This involved:
-Exploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges.
-Extracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble.
-Filtering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content.
-Identifying Sender–Receiver Relationships: Filtering edge types for "sent" and "received" and reshaping into a unified format.
-Merging Communication Metadata: Joining timestamps and content to each sender–receiver pair.
-Standardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.
-Enhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis.
+-   **Exploring Graph Structure:** Understanding the types, subtypes, and attributes of nodes and edges.
+-   **Extracting & Tidying Tables:** Converting nodes and edges into tabular tibbles using jsonlite and tibble.
+-   **Filtering Communication Events:** Isolating only Event nodes with subtype Communication, which contain timestamps and message content.
+-   **Identifying Sender–Receiver Relationships:** Filtering edge types for "sent" and "received" and reshaping into a unified format.
+-   **Merging Communication Metadata:** Joining timestamps and content to each sender–receiver pair.
+-   **Standardizing Entity Labels:** Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.
+-   **Enhancing with Time Features:** Deriving fields like weekday, hour, and week group for temporal analysis.
 
 ## 4.2. Temporal Pattern & Influence Network Analysis
-This is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs.
+
+This is to solve **Q1a–c**: Daily communication trends, how they evolve over time, and identification of influence hubs.
+
 Techniques and outputs include:
-Time Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.
-Week-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.
-Influence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).
-Insights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.
+
+-   **Time Series Visualization:** Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.
+-   **Week-over-Week Comparison:** Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.
+-   **Influence Network Graphs:** Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).
+-   **Insights into Influence:** Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.
 
 ## 4.3. Relationship Clusters & Pseudonym Mapping
 
 This is to solve:
-Q2a–b: Who interacts frequently and which groups emerge?
-Q3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities?
+
+-   **Q2a–b**: Who interacts frequently and which groups emerge?
+-   **Q3a–b**: Who is hiding behind pseudonyms, and what can we infer about their real identities?
+
 Key methods include:
-Graph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.
-Topic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.
-Pseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.
-Clustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity.
+-   **Graph-Based Clustering:** Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.
+-   **Topic Labeling by Cluster:** Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.
+-   **Pseudonym Detection:** Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.
+-   **Clustered Network with Alias Highlighting:** Annotating group-level graphs with nodes styled by pseudonym or known identity.
 
 ## 4.4. Time Series Analysis and Social Network graph
-This is to solve Q4a–b: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus 
+
+This is to solve **Q4a–b**: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus 
+
 Highlights of the investigation:
-Communication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.
-Temporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.
-Content Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.
-Mention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.
-Event Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.
-Classification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.
+-   **Communication Summary:** Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.
+-   **Temporal Drilldown:** Daily and hourly plots showing Nadia’s communication spikes during key event dates.
+-   **Content Analysis:** Keyword extraction by date, showing shifting language from planning → construction → cover-up.
+-   **Mention Network:** Built a second-degree network of conversations that mention Nadia but do not involve her directly.
+-   **Event Linkage:** Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.
+-   **Classification of Action Types:** Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.
 
 # 5. Prototype
 
 The prototype is splitted as follows:
 
-- [Identify temporal communication patterns and shifts and network influence](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
-- [Key interactions and relationships among individuals and vessels, detecting communication clusters, and identifying pseudonym usage](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
-- [Time Series Analysis and Social Network graph](https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+-   [Identify temporal communication patterns and shifts and network influence](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+-   [Key interactions and relationships among individuals and vessels, detecting communication clusters, and identifying pseudonym usage](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
+-   [Time Series Analysis and Social Network graph](https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02)
 
 For detail, please refer to [Prototype tab](prototype.html)
 
 # 6. Storyboard
+
 To support our investigation, we have designed and developed a prototype that visually outlines the structure of the R Shiny Application. This storyboard illustrates both the user interface (UI) layout and the corresponding server-side logic, offering a clear representation of how shareholders in Oceanus interact with the visual analytics workflow.
 
 For detail, please refer to [Storyboard page](storyboard.html)
 
-# 7. Packages 
+# 7. Packages
 
 To leverage the investigation, the following R packages has been used:
 
-- tidyverse
-- lubridate
- -igraph
-- ggraph
-- wordcloud
-- tidytext
-- stopwords
-- dplyr
-- tibble
-- visNetwork
-- stringr
-- knitr
-- ggplot2
-- readr
-- jsonlite
-- janitor
-- forcats
-- ggrepel
+-   tidyverse
+-   lubridate -igraph
+-   ggraph
+-   wordcloud
+-   tidytext
+-   stopwords
+-   dplyr
+-   tibble
+-   visNetwork
+-   stringr
+-   knitr
+-   ggplot2
+-   readr
+-   jsonlite
+-   janitor
+-   forcats
+-   ggrepel
 
 # 8. Appendix
 
