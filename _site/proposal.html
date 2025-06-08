@@ -129,7 +129,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">1. Motivation</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">2. Objectives</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">3. Data</a></li>
-  <li><a href="#methodology-analytical-approach" id="toc-methodology-analytical-approach" class="nav-link" data-scroll-target="#methodology-analytical-approach">4. Methodology &amp; Analytical Approach</a></li>
+  <li><a href="#methodology-analytical-approach" id="toc-methodology-analytical-approach" class="nav-link" data-scroll-target="#methodology-analytical-approach">4. Methodology &amp; Analytical Approach</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">4.1. Data Preparation</a></li>
+  <li><a href="#temporal-pattern-influence-network-analysis" id="toc-temporal-pattern-influence-network-analysis" class="nav-link" data-scroll-target="#temporal-pattern-influence-network-analysis">4.2. Temporal Pattern &amp; Influence Network Analysis</a></li>
+  <li><a href="#relationship-clusters-pseudonym-mapping" id="toc-relationship-clusters-pseudonym-mapping" class="nav-link" data-scroll-target="#relationship-clusters-pseudonym-mapping">4.3. Relationship Clusters &amp; Pseudonym Mapping</a></li>
+  <li><a href="#time-series-analysis-and-social-network-graph" id="toc-time-series-analysis-and-social-network-graph" class="nav-link" data-scroll-target="#time-series-analysis-and-social-network-graph">4.4. Time Series Analysis and Social Network graph</a></li>
+  </ul></li>
   <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype">5. Prototype</a></li>
   <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard">6. Storyboard</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">7. Packages</a></li>
@@ -205,12 +211,22 @@ ul.task-list li input[type="checkbox"] {
 <section id="methodology-analytical-approach" class="level1">
 <h1>4. Methodology &amp; Analytical Approach</h1>
 <p>For this project, the following approaches will be taken by the team:</p>
-<ol type="1">
-<li><p>Data Preparation:</p></li>
-<li></li>
-<li></li>
-<li><p>Time Series Analysis and Social Network graph: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus</p></li>
-</ol>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">4.1. Data Preparation</h2>
+<p>To support all subsequent analysis, we first transformed the raw knowledge graph into a tidy, analysis-ready format. This involved: Exploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges. Extracting &amp; Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble. Filtering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content. Identifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format. Merging Communication Metadata: Joining timestamps and content to each sender–receiver pair. Standardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields. Enhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis.</p>
+</section>
+<section id="temporal-pattern-influence-network-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="temporal-pattern-influence-network-analysis">4.2. Temporal Pattern &amp; Influence Network Analysis</h2>
+<p>This is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs. Techniques and outputs include: Time Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline. Week-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef. Influence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization). Insights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.</p>
+</section>
+<section id="relationship-clusters-pseudonym-mapping" class="level2">
+<h2 class="anchored" data-anchor-id="relationship-clusters-pseudonym-mapping">4.3. Relationship Clusters &amp; Pseudonym Mapping</h2>
+<p>This is to solve: Q2a–b: Who interacts frequently and which groups emerge? Q3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities? Key methods include: Graph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges. Topic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets. Pseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs.&nbsp;Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence. Clustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity.</p>
+</section>
+<section id="time-series-analysis-and-social-network-graph" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-analysis-and-social-network-graph">4.4. Time Series Analysis and Social Network graph</h2>
+<p>This is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus Highlights of the investigation: Communication Summary: Quantified and visualized Nadia’s sent vs.&nbsp;received messages, revealing her central coordination role. Temporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates. Content Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up. Mention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly. Event Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef. Classification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.</p>
+</section>
 </section>
 <section id="prototype" class="level1">
 <h1>5. Prototype</h1>

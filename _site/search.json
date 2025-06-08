@@ -7,6 +7,34 @@
     "text": "This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.\nLed by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story."
   },
   {
+    "objectID": "proposal.html#data-preparation",
+    "href": "proposal.html#data-preparation",
+    "title": "Project Proposal",
+    "section": "4.1. Data Preparation",
+    "text": "4.1. Data Preparation\nTo support all subsequent analysis, we first transformed the raw knowledge graph into a tidy, analysis-ready format. This involved: Exploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges. Extracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble. Filtering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content. Identifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format. Merging Communication Metadata: Joining timestamps and content to each sender–receiver pair. Standardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields. Enhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis."
+  },
+  {
+    "objectID": "proposal.html#temporal-pattern-influence-network-analysis",
+    "href": "proposal.html#temporal-pattern-influence-network-analysis",
+    "title": "Project Proposal",
+    "section": "4.2. Temporal Pattern & Influence Network Analysis",
+    "text": "4.2. Temporal Pattern & Influence Network Analysis\nThis is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs. Techniques and outputs include: Time Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline. Week-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef. Influence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization). Insights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications."
+  },
+  {
+    "objectID": "proposal.html#relationship-clusters-pseudonym-mapping",
+    "href": "proposal.html#relationship-clusters-pseudonym-mapping",
+    "title": "Project Proposal",
+    "section": "4.3. Relationship Clusters & Pseudonym Mapping",
+    "text": "4.3. Relationship Clusters & Pseudonym Mapping\nThis is to solve: Q2a–b: Who interacts frequently and which groups emerge? Q3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities? Key methods include: Graph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges. Topic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets. Pseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence. Clustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity."
+  },
+  {
+    "objectID": "proposal.html#time-series-analysis-and-social-network-graph",
+    "href": "proposal.html#time-series-analysis-and-social-network-graph",
+    "title": "Project Proposal",
+    "section": "4.4. Time Series Analysis and Social Network graph",
+    "text": "4.4. Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus Highlights of the investigation: Communication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role. Temporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates. Content Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up. Mention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly. Event Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef. Classification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity."
+  },
+  {
     "objectID": "proposal.html#appendixa",
     "href": "proposal.html#appendixa",
     "title": "Project Proposal",
