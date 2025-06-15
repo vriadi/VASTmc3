@@ -4,42 +4,60 @@
     "href": "proposal.html",
     "title": "Project Proposal",
     "section": "",
-    "text": "This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.\nLed by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story."
+    "text": "This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.\nLed by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story.",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "proposal.html#data-preparation-eda",
     "href": "proposal.html#data-preparation-eda",
     "title": "Project Proposal",
     "section": "4.1. Data Preparation & EDA",
-    "text": "4.1. Data Preparation & EDA\nFor this project, the following approaches will be taken by the team:\n\nExploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges.\nExtracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble.\nFiltering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content.\nIdentifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format.\nMerging Communication Metadata: Joining timestamps and content to each sender–receiver pair.\nStandardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.\nEnhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis."
+    "text": "4.1. Data Preparation & EDA\nFor this project, the following approaches will be taken by the team:\n\nExploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges.\nExtracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble.\nFiltering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content.\nIdentifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format.\nMerging Communication Metadata: Joining timestamps and content to each sender–receiver pair.\nStandardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.\nEnhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis.",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "proposal.html#temporal-pattern-influence-network-analysis",
     "href": "proposal.html#temporal-pattern-influence-network-analysis",
     "title": "Project Proposal",
     "section": "4.2. Temporal Pattern & Influence Network Analysis",
-    "text": "4.2. Temporal Pattern & Influence Network Analysis\nThis is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs.\nTechniques and outputs include:\n\nTime Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.\nWeek-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.\nInfluence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).\nInsights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications."
+    "text": "4.2. Temporal Pattern & Influence Network Analysis\nThis is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs.\nTechniques and outputs include:\n\nTime Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.\nWeek-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.\nInfluence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).\nInsights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "proposal.html#relationship-clusters-pseudonym-mapping",
     "href": "proposal.html#relationship-clusters-pseudonym-mapping",
     "title": "Project Proposal",
     "section": "4.3. Relationship Clusters & Pseudonym Mapping",
-    "text": "4.3. Relationship Clusters & Pseudonym Mapping\nThis is to solve:\n\nQ2a–b: Who interacts frequently and which groups emerge?\nQ3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities?\n\nKey methods include:\n\nGraph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.\nTopic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.\nPseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.\nClustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity."
+    "text": "4.3. Relationship Clusters & Pseudonym Mapping\nThis is to solve:\n\nQ2a–b: Who interacts frequently and which groups emerge?\nQ3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities?\n\nKey methods include:\n\nGraph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.\nTopic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.\nPseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.\nClustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity.",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "proposal.html#time-series-analysis-and-social-network-graph",
     "href": "proposal.html#time-series-analysis-and-social-network-graph",
     "title": "Project Proposal",
     "section": "4.4. Time Series Analysis and Social Network graph",
-    "text": "4.4. Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus \nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity."
+    "text": "4.4. Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus \nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "proposal.html#appendixa",
     "href": "proposal.html#appendixa",
     "title": "Project Proposal",
     "section": "8.1 Appendix A",
-    "text": "8.1 Appendix A"
+    "text": "8.1 Appendix A",
+    "crumbs": [
+      "Proposal"
+    ]
   },
   {
     "objectID": "about.html",
@@ -49,13 +67,6 @@
     "text": "About this siteasdfasdfasdf {TEST asd}"
   },
   {
-    "objectID": "team.html",
-    "href": "team.html",
-    "title": "About The Team",
-    "section": "",
-    "text": "We are a team of 3 from Singapore Management University’s Master of IT in Business (Data Science & Analytics) consist of:\n\nVanessa Riadi\n\nLinkedIn\nProject Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.\n\n\n\nNguyen Phuong Hoa\n\nLinkedIn\nEarned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive. Currently pursuing a Master’s in Analytics at Singapore Management University (SMU). Sociable, persistent, and detail-oriented. Dedicated, disciplined, and highly responsible.\n\n\n\nNguyen Nguyen Ha (Summer)\n\nLinkedIn\nOperation Analyst and Top 5% of RMIT’24 graduating students from all programs."
-  },
-  {
     "objectID": "prototype.html",
     "href": "prototype.html",
     "title": "Prototype",
@@ -63,17 +74,43 @@
     "text": "Work In Progress"
   },
   {
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "About The Team",
+    "section": "",
+    "text": "We are a team of 3 from Singapore Management University’s Master of IT in Business (Data Science & Analytics) consist of:\n\nVanessa Riadi\n\nLinkedIn\nProject Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.\n\n\n\nNguyen Phuong Hoa\n\nLinkedIn\nEarned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive. Currently pursuing a Master’s in Analytics at Singapore Management University (SMU). Sociable, persistent, and detail-oriented. Dedicated, disciplined, and highly responsible.\n\n\n\nNguyen Nguyen Ha (Summer)\n\nLinkedIn\nOperation Analyst and Top 5% of RMIT’24 graduating students from all programs.",
+    "crumbs": [
+      "Team"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "VAST Challenge 2025 - Mini Challenge 3",
     "section": "",
-    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story."
+    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "storyboard.html",
     "href": "storyboard.html",
     "title": "Storyboard",
     "section": "",
-    "text": "Work In Progress"
+    "text": "The first app, Temporal Pattern and Communication Network, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\nThe second app, Relationship Clusters and Pseudonyms, will be based on Part 2 - Relationship Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
+    "crumbs": [
+      "Storyboard"
+    ]
+  },
+  {
+    "objectID": "app1.html",
+    "href": "app1.html",
+    "title": "Temporal Pattern and Communication Network",
+    "section": "",
+    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
+    "crumbs": [
+      "Temporal Pattern and Communication Network"
+    ]
   }
 ]

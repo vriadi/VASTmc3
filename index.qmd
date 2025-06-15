@@ -1,12 +1,5 @@
 ---
 title: "VAST Challenge 2025 - Mini Challenge 3"
-toc: false
-sidebar: false
-execute: 
-  echo: true
-  eval: true
-  warning: false
-  freeze: true
 ---
 
 Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.

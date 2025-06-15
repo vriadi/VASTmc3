@@ -2,9 +2,25 @@ project:
   type: website
 
 website:
-  title: "VASTmc3"
-  navbar:
-    left:
+  title: "Reef Whispers"
+  site-url: "https://reefwhispers.netlify.app/"
+  sidebar:
+    background: "#181d31"
+    logo: "images/ReefWhisperLogo.jpg"
+    pinned: true
+    align: center
+    tools:
+      - icon: house-fill
+        href: "https://reefwhispers.netlify.app/"
+        text: "Home"
+      - icon: github
+        href: "https://github.com/vriadi/VASTmc3"
+        text: "GitHub"
+    
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
       - href: index.html
         text: Home
       - href: team.html
@@ -13,14 +29,21 @@ website:
         text: Proposal
       - href: storyboard.html
         text: Storyboard
-      - href: prototype.html
-        text: Prototype
+      #- href: prototype.html
+      #  text: Prototype
+      - #href: dataprep.html 
+        text: Data Preparation
+      - href: app1.html 
+        text: Temporal Pattern and Communication Network  
+      - #href: app2.html 
+        text: Communication Clusters and Pseudonym
+      - #href: app3.html 
+        text: Time Series Analysis and Social Network graph
 
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
     toc: true
 
 editor: visual
-

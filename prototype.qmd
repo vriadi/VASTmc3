@@ -1,6 +1,6 @@
 ---
 title: "Prototype"
-author: "Vanessa Riadi, Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer)"
+author: "ReefWhispers Team"
 date: "June 8, 2025"
 date-modified: "last-modified"
 format:
@@ -15,4 +15,3 @@ execute:
 ---
 
 # Work In Progress
-

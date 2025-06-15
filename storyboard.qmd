@@ -1,7 +1,7 @@
 ---
 title: "Storyboard"
-author: "Vanessa Riadi, Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer)"
-date: "June 8, 2025"
+author: "ReefWhispers Team"
+date: "June 15, 2025"
 date-modified: "last-modified"
 format:
   html:
@@ -14,4 +14,26 @@ execute:
   freeze: true
 ---
 
-# Work In Progress
+**The first app**, **Temporal Pattern and Communication Network**, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:
+
+-   Identifying temporal patterns in communications.
+
+-   Revealing relationships and influence among entities (people, vessels, groups).
+
+**The second app**, **Relationship Clusters and Pseudonyms**, will be based on Part 2 - Relationship Cluster and Pseudonym: [Hoa's Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:
+
+-   Uncovering interactions and relationships between vessels and individuals in the network.
+
+-   Identifying tightly knit groups and inferring the dominant topics of their discussions.
+
+-   Detecting the use of pseudonyms and linking them back to real identities.
+
+-   Exploring how visual analytics can help expose common identities disguised under multiple aliases.
+
+**The third app**, **Time Series Analysis and Social Network Graph**, will be based on Part 3 - Time Series Analysis and Social Network graph: [Summer's Take Home Exercise 2](https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:
+
+-   Determining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.
+
+-   Summarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.
+
+This app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.
