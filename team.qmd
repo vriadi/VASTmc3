@@ -11,19 +11,30 @@ execute:
   freeze: true
 ---
 
-We are a team of 3 from Singapore Management University's Master of IT in Business (Data Science & Analytics) consist of:
+The ReefWhisper Team consist of a team of 3 from Singapore Management University's Master of IT in Business (Data Science & Analytics)
 
-# Vanessa Riadi
+:::::: columns
+::: {.column width="33%" align="center"}
+![](images/VR.jpeg){width="100%"}
 
--   [LinkedIn](https://www.linkedin.com/in/vanessariadi/)
--   Project Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.
+**Vanessa Riadi**\
+[LinkedIn](https://www.linkedin.com/in/vanessariadi/)\
+Project Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.
+:::
 
-# Nguyen Phuong Hoa
+::: {.column width="33%" align="center"}
+![](images/Hoa.jpeg){width="100%"}
 
--   [LinkedIn](https://www.linkedin.com/in/phuonghoangn/)
--   Earned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive. Currently pursuing a Master's in Analytics at Singapore Management University (SMU). Sociable, persistent, and detail-oriented. Dedicated, disciplined, and highly responsible.
+**Nguyen Phuong Hoa**\
+[LinkedIn](https://www.linkedin.com/in/phuonghoangn/)\
+Earned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive.
+:::
 
-# Nguyen Nguyen Ha (Summer)
+::: {.column width="33%" align="center"}
+![](images/Summer.jpeg){width="100%"}
 
--   [LinkedIn](https://www.linkedin.com/in/nguyen-ha-nguyen-552752208/)
--   Operation Analyst and Top 5% of RMIT'24 graduating students from all programs.
+**Nguyen Nguyen Ha (Summer)**\
+[LinkedIn](https://www.linkedin.com/in/nguyen-ha-nguyen-552752208/)\
+Operation Analyst and Top 5% of RMIT'24 graduating students from all programs.
+:::
+::::::
