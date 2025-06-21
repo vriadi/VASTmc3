@@ -35,7 +35,7 @@ website:
         text: Data Preparation
       - href: app1.html 
         text: Temporal Pattern and Communication Network  
-      - #href: app2.html 
+      - href: app2.html 
         text: Communication Clusters and Pseudonym
       - #href: app3.html 
         text: Time Series Analysis and Social Network graph

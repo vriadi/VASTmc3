@@ -1,0 +1,24 @@
+---
+title: "Communication Cluster and Pseudonym"
+format:
+  html:
+    toc: false
+    prefer-html: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+**Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.**
+
+```{=html}
+<div style="width: 100%; height: 1000px; padding: 0; overflow: hidden;">
+  <iframe 
+    src="https://vriadi.shinyapps.io/reefwhispers_app2/" 
+    title="CMAP-RSI Explorer"
+    style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
+```

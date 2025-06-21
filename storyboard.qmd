@@ -20,7 +20,7 @@ execute:
 
 -   Revealing relationships and influence among entities (people, vessels, groups).
 
-**The second app**, **Relationship Clusters and Pseudonyms**, will be based on Part 2 - Relationship Cluster and Pseudonym: [Hoa's Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:
+**The second app**, **Relationship Clusters and Pseudonyms**, will be based on Part 2 - Communication Cluster and Pseudonym: [Hoa's Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:
 
 -   Uncovering interactions and relationships between vessels and individuals in the network.
 

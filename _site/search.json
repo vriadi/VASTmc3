@@ -67,21 +67,14 @@
     "text": "About this siteasdfasdfasdf {TEST asd}"
   },
   {
-    "objectID": "app1.html",
-    "href": "app1.html",
-    "title": "Temporal Pattern and Communication Network",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "VAST Challenge 2025 - Mini Challenge 3",
     "section": "",
-    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
+    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story.",
     "crumbs": [
-      "Temporal Pattern and Communication Network"
+      "Home"
     ]
-  },
-  {
-    "objectID": "prototype.html",
-    "href": "prototype.html",
-    "title": "Prototype",
-    "section": "",
-    "text": "Work In Progress"
   },
   {
     "objectID": "team.html",
@@ -94,13 +87,30 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "VAST Challenge 2025 - Mini Challenge 3",
+    "objectID": "prototype.html",
+    "href": "prototype.html",
+    "title": "Prototype",
     "section": "",
-    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story.",
+    "text": "Work In Progress"
+  },
+  {
+    "objectID": "app1.html",
+    "href": "app1.html",
+    "title": "Temporal Pattern and Communication Network",
+    "section": "",
+    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
     "crumbs": [
-      "Home"
+      "Temporal Pattern and Communication Network"
+    ]
+  },
+  {
+    "objectID": "app2.html",
+    "href": "app2.html",
+    "title": "Communication Cluster and Pseudonym",
+    "section": "",
+    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.",
+    "crumbs": [
+      "Communication Clusters and Pseudonym"
     ]
   },
   {
@@ -108,7 +118,7 @@
     "href": "storyboard.html",
     "title": "Storyboard",
     "section": "",
-    "text": "The first app, Temporal Pattern and Communication Network, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\nThe second app, Relationship Clusters and Pseudonyms, will be based on Part 2 - Relationship Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
+    "text": "The first app, Temporal Pattern and Communication Network, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\nThe second app, Relationship Clusters and Pseudonyms, will be based on Part 2 - Communication Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
     "crumbs": [
       "Storyboard"
     ]
