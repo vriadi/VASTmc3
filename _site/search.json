@@ -67,14 +67,21 @@
     "text": "About this siteasdfasdfasdf {TEST asd}"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "VAST Challenge 2025 - Mini Challenge 3",
+    "objectID": "app1.html",
+    "href": "app1.html",
+    "title": "Temporal Pattern and Communication Network",
     "section": "",
-    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story.",
+    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
     "crumbs": [
-      "Home"
+      "Temporal Pattern and Communication Network"
     ]
+  },
+  {
+    "objectID": "prototype.html",
+    "href": "prototype.html",
+    "title": "Prototype",
+    "section": "",
+    "text": "Work In Progress"
   },
   {
     "objectID": "team.html",
@@ -87,20 +94,13 @@
     ]
   },
   {
-    "objectID": "prototype.html",
-    "href": "prototype.html",
-    "title": "Prototype",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "VAST Challenge 2025 - Mini Challenge 3",
     "section": "",
-    "text": "Work In Progress"
-  },
-  {
-    "objectID": "app1.html",
-    "href": "app1.html",
-    "title": "Temporal Pattern and Communication Network",
-    "section": "",
-    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
+    "text": "Over the past decade, the community of Oceanus has faced numerous transformations and challenges evolving from its fishing-centric origins. Following major crackdowns on illegal fishing activities, suspects have shifted investments into more regulated sectors such as the ocean tourism industry, resulting in growing tensions. This increased tourism has recently attracted the likes of international pop star Sailor Shift, who announced plans to film a music video on the island.\nClepper Jessen, a former analyst at FishEye and now a seasoned journalist for the Hacklee Herald, has been keenly observing these rising tensions. Recently, he turned his attention towards the temporary closure of Nemo Reef. By listening to radio communications and utilizing his investigative tools, Clepper uncovered a complex web of expedited approvals and secretive logistics. These efforts revealed a story involving high-level Oceanus officials, Sailor Shift’s team, local influential families, and local conservationist group The Green Guardians, pointing towards a story of corruption and manipulation.\nThis project aims to develop new and novel visualizations and visual analytics approaches to help Clepper get to the bottom of this story.",
     "crumbs": [
-      "Temporal Pattern and Communication Network"
+      "Home"
     ]
   },
   {
