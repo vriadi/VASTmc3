@@ -1,1 +1,16 @@
 /* css styles */
+
+.full-width-iframe {
+  width: 100vw;         /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it by offsetting the document padding */
+  height: 1000px;       /* Or any desired height */
+  overflow: hidden;
+}
+
+.full-width-iframe iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+

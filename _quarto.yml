@@ -9,41 +9,58 @@ website:
     logo: "images/ReefWhisperLogo.jpg"
     pinned: true
     align: center
-    tools:
-      - icon: house-fill
-        href: "https://reefwhispers.netlify.app/"
-        text: "Home"
-      - icon: github
-        href: "https://github.com/vriadi/VASTmc3"
-        text: "GitHub"
-    
     style: "docked"
-    search: true
+    search: false
     collapse-level: 1
     contents:
-      - href: index.html
+      - icon: house-fill
+        href: index.html
         text: Home
-      - href: team.html
+      - icon: people-fill
+        href: team.html
         text: Team
-      - href: proposal.html
+      - icon: window
+        href: proposal.html
         text: Proposal
-      - href: storyboard.html
+      - icon: ui-checks-grid
+        href: storyboard.html
         text: Storyboard
       #- href: prototype.html
       #  text: Prototype
       - #href: dataprep.html 
+        icon: check-circle
         text: Data Preparation
-      - href: app1.html 
-        text: Temporal Pattern and Communication Network  
-      - href: app2.html 
-        text: Communication Clusters and Pseudonym
-      - href: app3.html 
-        text: Time Series Analysis and Social Network graph
+      - section: ShinyApp
+        contents:
+          - icon: book
+            #href: userguide.html
+            text: User Guide
+          - icon: clock-history
+            href: app1.html 
+            text: Temporal Pattern and Communication Network  
+          - icon: virus2
+            href: app2.html 
+            text: Communication Clusters and Pseudonym
+          - icon: graph-up
+            href: app3.html 
+            text: Time Series Analysis and Social Network graph
+        
+    tools:
+      - icon: house-fill
+        href: "https://reefwhispers.netlify.app/"
+        text: Home
+      - icon: github
+        href: "https://github.com/vriadi/VASTmc3"
+        text: GitHub
+        target: _blank
 
 format:
   html:
-    theme: minty
+    theme: flatly
     css: styles.css
-    toc: true
+    page-layout: full
+    navigation: 
+      collapse: true  # optional
+      scrollToTop: true
 
 editor: visual

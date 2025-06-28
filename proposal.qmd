@@ -7,6 +7,8 @@ format:
   html:
     toc: true
     prefer-html: true
+    navigation:
+      scrollToTop: true
 execute: 
   echo: true
   eval: true
@@ -14,7 +16,7 @@ execute:
   freeze: true
 ---
 
-# 1. Motivation
+# 1. Motivation {#motivation}
 
 This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.
 
@@ -37,7 +39,7 @@ The primary dataset for this project is a knowledge graph constructed from inter
 
 Additional contextual data from the Mini Challenge background supports the analysis, including: - Entity affiliations and roles (e.g., Green Guardians, Sailor Shift’s entourage). - Identified pseudonyms (e.g., “Boss”, “The Lookout”). - Records of previous illicit activities (e.g., Nadia Conti’s involvement).
 
-Refer to [Appendix A](#appendixa) for a detailed breakdown of the dataset.
+Refer to the [reference](#reference) for a detailed breakdown of the dataset.
 
 # 4. Methodology & Analytical Approach
 
@@ -80,7 +82,7 @@ Key methods include:
 
 ## 4.4. Time Series Analysis and Social Network graph
 
-This is to solve **Q4a–b**: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus 
+This is to solve **Q4a–b**: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus.
 
 Highlights of the investigation:
 
@@ -129,8 +131,7 @@ To leverage the investigation, the following R packages has been used:
 -   forcats
 -   ggrepel
 
-# 8. Appendix
+# 8. Reference {#reference}
 
-## 8.1 Appendix A {#appendixa}
+[MC 3 Data Description](MC3_data_description.pdf){target="_blank"}
 
-![](data/MC3_data_description.pdf){fig-align="center" width="700" height="350"}

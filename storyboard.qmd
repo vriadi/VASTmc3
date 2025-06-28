@@ -7,6 +7,8 @@ format:
   html:
     toc: true
     prefer-html: true
+    navigation:
+      scrollToTop: true
 execute: 
   echo: true
   eval: true
@@ -14,13 +16,13 @@ execute:
   freeze: true
 ---
 
-**The first app**, **Temporal Pattern and Communication Network**, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:
+**The first app**, **Temporal Pattern and Communication Network**, will be based on Part 2 - [Vanessa's Take Home Exercise 2](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). Focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in [Chapter 4](#app1). It will be focusing on:
 
 -   Identifying temporal patterns in communications.
 
 -   Revealing relationships and influence among entities (people, vessels, groups).
 
-**The second app**, **Relationship Clusters and Pseudonyms**, will be based on Part 2 - Communication Cluster and Pseudonym: [Hoa's Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:
+**The second app**, **Communication Clusters and Pseudonyms**, will be based on Part 2 - Communication Cluster and Pseudonym: [Hoa's Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:
 
 -   Uncovering interactions and relationships between vessels and individuals in the network.
 

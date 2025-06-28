@@ -44,17 +44,7 @@
     "href": "proposal.html#time-series-analysis-and-social-network-graph",
     "title": "Project Proposal",
     "section": "4.4. Time Series Analysis and Social Network graph",
-    "text": "4.4. Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus \nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "proposal.html#appendixa",
-    "href": "proposal.html#appendixa",
-    "title": "Project Proposal",
-    "section": "8.1 Appendix A",
-    "text": "8.1 Appendix A",
+    "text": "4.4. Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus.\nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.",
     "crumbs": [
       "Proposal"
     ]
@@ -67,12 +57,24 @@
     "text": "About this siteasdfasdfasdf {TEST asd}"
   },
   {
+    "objectID": "app3.html",
+    "href": "app3.html",
+    "title": "Time Series Analysis and Social Network graph",
+    "section": "",
+    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.",
+    "crumbs": [
+      "ShinyApp",
+      "Time Series Analysis and Social Network graph"
+    ]
+  },
+  {
     "objectID": "app1.html",
     "href": "app1.html",
     "title": "Temporal Pattern and Communication Network",
     "section": "",
     "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
     "crumbs": [
+      "ShinyApp",
       "Temporal Pattern and Communication Network"
     ]
   },
@@ -110,6 +112,7 @@
     "section": "",
     "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.",
     "crumbs": [
+      "ShinyApp",
       "Communication Clusters and Pseudonym"
     ]
   },
@@ -118,7 +121,7 @@
     "href": "storyboard.html",
     "title": "Storyboard",
     "section": "",
-    "text": "The first app, Temporal Pattern and Communication Network, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\nThe second app, Relationship Clusters and Pseudonyms, will be based on Part 2 - Communication Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
+    "text": "The first app, Temporal Pattern and Communication Network, will be based on Part 2 - Vanessa’s Take Home Exercise 2. Focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in Chapter 4. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\nThe second app, Communication Clusters and Pseudonyms, will be based on Part 2 - Communication Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
     "crumbs": [
       "Storyboard"
     ]
