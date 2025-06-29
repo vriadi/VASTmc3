@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="ReefWhispers Team">
+<meta name="dcterms.date" content="2025-06-29">
+
+<title>Data Preparation – Reef Whispers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Data Preparation</h1>
+        </a>     
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/ReefWhisperLogo.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="./index.html" title="Home" class="quarto-navigation-tool px-1" aria-label="Home"><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/vriadi/VASTmc3" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-house-fill" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./team.html" class="sidebar-item-text sidebar-link"><i class="bi bi-people-fill" role="img">
+</i> 
+ <span class="menu-text">Team</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proposal.html" class="sidebar-item-text sidebar-link"><i class="bi bi-window" role="img">
+</i> 
+ <span class="menu-text">Proposal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./storyboard.html" class="sidebar-item-text sidebar-link"><i class="bi bi-ui-checks-grid" role="img">
+</i> 
+ <span class="menu-text">Storyboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dataprep.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-check-circle" role="img">
+</i> 
+ <span class="menu-text">Data Preparation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">ShinyApp</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./userguide.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">User Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app1.html" class="sidebar-item-text sidebar-link"><i class="bi bi-clock-history" role="img">
+</i> 
+ <span class="menu-text">Temporal Pattern and Communication Network</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app2.html" class="sidebar-item-text sidebar-link"><i class="bi bi-virus2" role="img">
+</i> 
+ <span class="menu-text">Communication Clusters and Pseudonym</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app3.html" class="sidebar-item-text sidebar-link"><i class="bi bi-graph-up" role="img">
+</i> 
+ <span class="menu-text">Time Series Analysis and Social Network graph</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analytical-toolkit-rstudio" id="toc-analytical-toolkit-rstudio" class="nav-link active" data-scroll-target="#analytical-toolkit-rstudio"><span style="color:#d496d4; background:none;">1</span> Analytical Toolkit: RStudio</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span style="color:#d496d4; background:none;">2</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data"><span style="color:#d496d4; background:none;">2.1</span> Load the Data</a></li>
+  <li><a href="#check-the-data" id="toc-check-the-data" class="nav-link" data-scroll-target="#check-the-data"><span style="color:#d496d4; background:none;">2.2</span> Check the Data</a>
+  <ul class="collapse">
+  <li><a href="#graph_data" id="toc-graph_data" class="nav-link" data-scroll-target="#graph_data"><span style="color:#d496d4; background:none;">2.2.1</span> graph_data</a></li>
+  <li><a href="#schema_data" id="toc-schema_data" class="nav-link" data-scroll-target="#schema_data"><span style="color:#d496d4; background:none;">4.2.2</span> schema_data</a></li>
+  </ul></li>
+  <li><a href="#extracting-the-edges-and-nodes-tables" id="toc-extracting-the-edges-and-nodes-tables" class="nav-link" data-scroll-target="#extracting-the-edges-and-nodes-tables"><span style="color:#d496d4; background:none;">2.3</span> Extracting the edges and nodes tables</a>
+  <ul class="collapse">
+  <li><a href="#EDA" id="toc-EDA" class="nav-link" data-scroll-target="#EDA"><span style="color:#d496d4; background:none;">2.3.1</span> Initial EDA</a></li>
+  </ul></li>
+  <li><a href="#dataprep" id="toc-dataprep" class="nav-link" data-scroll-target="#dataprep"><span style="color:#d496d4; background:none;">2.4</span> Data Preparation</a>
+  <ul class="collapse">
+  <li><a href="#extract-communication-events-with-timestamps" id="toc-extract-communication-events-with-timestamps" class="nav-link" data-scroll-target="#extract-communication-events-with-timestamps"><span style="color:#d496d4; background:none;">2.4.1</span> Extract communication events with timestamps</a></li>
+  <li><a href="#extract-necessary-fields" id="toc-extract-necessary-fields" class="nav-link" data-scroll-target="#extract-necessary-fields"><span style="color:#d496d4; background:none;">2.4.2</span> Extract necessary fields</a></li>
+  <li><a href="#convert-timestamp-from-chr-to-datetime-format" id="toc-convert-timestamp-from-chr-to-datetime-format" class="nav-link" data-scroll-target="#convert-timestamp-from-chr-to-datetime-format"><span style="color:#d496d4; background:none;">2.4.3</span> Convert timestamp from chr to datetime format</a></li>
+  <li><a href="#filter-edges-for-sender-and-receiver" id="toc-filter-edges-for-sender-and-receiver" class="nav-link" data-scroll-target="#filter-edges-for-sender-and-receiver"><span style="color:#d496d4; background:none;">2.4.3</span> Filter edges for sender and receiver</a></li>
+  <li><a href="#separate-and-rename" id="toc-separate-and-rename" class="nav-link" data-scroll-target="#separate-and-rename"><span style="color:#d496d4; background:none;">2.4.4</span> Separate and rename</a></li>
+  <li><a href="#join-sender-and-receiver-info" id="toc-join-sender-and-receiver-info" class="nav-link" data-scroll-target="#join-sender-and-receiver-info"><span style="color:#d496d4; background:none;">2.4.5</span> Join sender and receiver info</a></li>
+  <li><a href="#combine-with-communication-details" id="toc-combine-with-communication-details" class="nav-link" data-scroll-target="#combine-with-communication-details"><span style="color:#d496d4; background:none;">2.4.6</span> Combine with communication details</a></li>
+  <li><a href="#join-entity-labels-for-sender-and-receiver" id="toc-join-entity-labels-for-sender-and-receiver" class="nav-link" data-scroll-target="#join-entity-labels-for-sender-and-receiver"><span style="color:#d496d4; background:none;">2.4.7</span> Join entity labels for sender and receiver</a></li>
+  <li><a href="#combine-everything" id="toc-combine-everything" class="nav-link" data-scroll-target="#combine-everything"><span style="color:#d496d4; background:none;">2.4.7</span> Combine everything</a></li>
+  <li><a href="#derive-weekday-and-hour-of-the-day-fields" id="toc-derive-weekday-and-hour-of-the-day-fields" class="nav-link" data-scroll-target="#derive-weekday-and-hour-of-the-day-fields"><span style="color:#d496d4; background:none;">2.4.8</span> Derive weekday and hour of the day fields</a></li>
+  <li><a href="#save-to-csv" id="toc-save-to-csv" class="nav-link" data-scroll-target="#save-to-csv"><span style="color:#d496d4; background:none;">2.4.9</span> Save to CSV</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Data Preparation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ReefWhispers Team </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 29, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 29, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="analytical-toolkit-rstudio" class="level1">
+<h1><span style="color:#d496d4; background:none;">1</span> Analytical Toolkit: RStudio</h1>
+<p>RStudio and Quarto are used as the primary analytical tools for this challenge. The data will be analyzed and visualized using the <strong>tidyverse</strong> suite and advanced network visualization packages to explore the knowledge graph and temporal communication dynamics.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Install <a href="https://cran.r-project.org/web/packages/pacman/index.html" target="_blank"><strong>pacman</strong></a> package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before we get started, it is important for us to ensure that the required R packages have been installed. If you have yet to install pacman, install it by typing below in the Console:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<p>We then load the following R packages using the <code>pacman::p_load()</code> function:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data" class="level1">
+<h1><span style="color:#d496d4; background:none;">2</span> Data</h1>
+<p>The core dataset is a knowledge graph derived from radio communications intercepted over a two-week period on Oceanus. Each node in the graph represents an entity such as a person, vessel, pseudonym, or organization. Edges represent interactions or co-occurrences in communications. Edge attributes include timestamp, topic, message type, and possible pseudonym use.</p>
+<p>Supplementary information from the story given on the Mini Challenge page includes:</p>
+<ul>
+<li><p>Entity roles and affiliations (e.g., Green Guardians, Sailor Shift’s crew).</p></li>
+<li><p>Known pseudonyms (e.g., “Boss”, “The Lookout”).</p></li>
+<li><p>Historical involvement in illicit activities (e.g., Nadia Conti).</p></li>
+</ul>
+<p>Refer to the data description details in <a href="#appendixa">Appendix A</a></p>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data"><span style="color:#d496d4; background:none;">2.1</span> Load the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>graph_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/MC3_graph.json"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>schema_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/MC3_schema.json"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-data"><span style="color:#d496d4; background:none;">2.2</span> Check the Data</h2>
+<section id="graph_data" class="level3">
+<h3 class="anchored" data-anchor-id="graph_data"><span style="color:#d496d4; background:none;">2.2.1</span> graph_data</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(graph_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ directed  : logi TRUE
+ $ multigraph: logi FALSE
+ $ graph     :List of 4
+  ..$ mode        : chr "static"
+  ..$ edge_default: Named list()
+  ..$ node_default: Named list()
+  ..$ name        : chr "VAST_MC3_Knowledge_Graph"
+ $ nodes     :'data.frame': 1159 obs. of  31 variables:
+  ..$ type             : chr [1:1159] "Entity" "Entity" "Entity" "Entity" ...
+  ..$ label            : chr [1:1159] "Sam" "Kelly" "Nadia Conti" "Elise" ...
+  ..$ name             : chr [1:1159] "Sam" "Kelly" "Nadia Conti" "Elise" ...
+  ..$ sub_type         : chr [1:1159] "Person" "Person" "Person" "Person" ...
+  ..$ id               : chr [1:1159] "Sam" "Kelly" "Nadia Conti" "Elise" ...
+  ..$ timestamp        : chr [1:1159] NA NA NA NA ...
+  ..$ monitoring_type  : chr [1:1159] NA NA NA NA ...
+  ..$ findings         : chr [1:1159] NA NA NA NA ...
+  ..$ content          : chr [1:1159] NA NA NA NA ...
+  ..$ assessment_type  : chr [1:1159] NA NA NA NA ...
+  ..$ results          : chr [1:1159] NA NA NA NA ...
+  ..$ movement_type    : chr [1:1159] NA NA NA NA ...
+  ..$ destination      : chr [1:1159] NA NA NA NA ...
+  ..$ enforcement_type : chr [1:1159] NA NA NA NA ...
+  ..$ outcome          : chr [1:1159] NA NA NA NA ...
+  ..$ activity_type    : chr [1:1159] NA NA NA NA ...
+  ..$ participants     : int [1:1159] NA NA NA NA NA NA NA NA NA NA ...
+  ..$ thing_collected  :'data.frame':   1159 obs. of  2 variables:
+  .. ..$ type: chr [1:1159] NA NA NA NA ...
+  .. ..$ name: chr [1:1159] NA NA NA NA ...
+  ..$ reference        : chr [1:1159] NA NA NA NA ...
+  ..$ date             : chr [1:1159] NA NA NA NA ...
+  ..$ time             : chr [1:1159] NA NA NA NA ...
+  ..$ friendship_type  : chr [1:1159] NA NA NA NA ...
+  ..$ permission_type  : chr [1:1159] NA NA NA NA ...
+  ..$ start_date       : chr [1:1159] NA NA NA NA ...
+  ..$ end_date         : chr [1:1159] NA NA NA NA ...
+  ..$ report_type      : chr [1:1159] NA NA NA NA ...
+  ..$ submission_date  : chr [1:1159] NA NA NA NA ...
+  ..$ jurisdiction_type: chr [1:1159] NA NA NA NA ...
+  ..$ authority_level  : chr [1:1159] NA NA NA NA ...
+  ..$ coordination_type: chr [1:1159] NA NA NA NA ...
+  ..$ operational_role : chr [1:1159] NA NA NA NA ...
+ $ edges     :'data.frame': 3226 obs. of  5 variables:
+  ..$ id         : chr [1:3226] "2" "3" "5" "3013" ...
+  ..$ is_inferred: logi [1:3226] TRUE FALSE TRUE TRUE TRUE TRUE ...
+  ..$ source     : chr [1:3226] "Sam" "Sam" "Sam" "Sam" ...
+  ..$ target     : chr [1:3226] "Relationship_Suspicious_217" "Event_Communication_370" "Event_Assessment_600" "Relationship_Colleagues_430" ...
+  ..$ type       : chr [1:3226] NA "sent" NA NA ...</code></pre>
+</div>
+</div>
+</section>
+<section id="schema_data" class="level3">
+<h3 class="anchored" data-anchor-id="schema_data"><span style="color:#d496d4; background:none;">4.2.2</span> schema_data</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(schema_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 1
+ $ schema:List of 2
+  ..$ nodes:List of 3
+  .. ..$ Entity      :List of 2
+  .. ..$ Event       :List of 2
+  .. ..$ Relationship:List of 2
+  ..$ edges:List of 3
+  .. ..$ description: chr "Connections between nodes in the knowledge graph"
+  .. ..$ is_inferred: chr "bool"
+  .. ..$ types      :'data.frame':  6 obs. of  5 variables:</code></pre>
+</div>
+</div>
+<section id="glimpse" class="level4 no-top-padding nursebox nurse">
+<h4 class="no-top-padding anchored" data-anchor-id="glimpse"><strong>Observation</strong></h4>
+<ul>
+<li>Each data set are already split to nodes and edges thus we will extract the edges and nodes to their own tables.</li>
+<li>There are a lot of NA values because only certain types have certain information. For example type = “events” and sub_type = “Communications” will have timestamp and content.</li>
+<li>Since the focus is recorded intercepted radio communications over the last two weeks, we will also focus on Communications records.</li>
+<li>We also need to clean and convert some of the data types (e.g Convert timestamp from chr to datetime format)</li>
+</ul>
+<p>Let’s explore each edges and nodes!</p>
+</section>
+</section>
+</section>
+<section id="extracting-the-edges-and-nodes-tables" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-the-edges-and-nodes-tables"><span style="color:#d496d4; background:none;">2.3</span> Extracting the edges and nodes tables</h2>
+<p>First we need to extract the nodes and links tibble data frames using <code>as_tibble()</code> of <strong>tibble</strong> package package into two separate tibble dataframes called <em>nodes_tbl</em> and <em>edges_tbl</em> respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nodes_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(graph_data<span class="sc">$</span>nodes)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>edges_tbl <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(graph_data<span class="sc">$</span>edges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="EDA" class="level3">
+<h3 class="anchored" data-anchor-id="EDA"><span style="color:#d496d4; background:none;">2.3.1</span> Initial EDA</h3>
+<section id="check-how-many-distinct-nodes" class="level4">
+<h4 class="anchored" data-anchor-id="check-how-many-distinct-nodes"><span style="color:#d496d4; background:none;">2.3.1.1</span> Check how many distinct nodes</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nodes_tbl<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      Entity        Event Relationship 
+          72          802          285 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(nodes_tbl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">sub_type</th>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">monitoring_type</th>
+<th style="text-align: left;">findings</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">assessment_type</th>
+<th style="text-align: left;">results</th>
+<th style="text-align: left;">movement_type</th>
+<th style="text-align: left;">destination</th>
+<th style="text-align: left;">enforcement_type</th>
+<th style="text-align: left;">outcome</th>
+<th style="text-align: left;">activity_type</th>
+<th style="text-align: right;">participants</th>
+<th style="text-align: left;">thing_collected</th>
+<th style="text-align: left;">reference</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">time</th>
+<th style="text-align: left;">friendship_type</th>
+<th style="text-align: left;">permission_type</th>
+<th style="text-align: left;">start_date</th>
+<th style="text-align: left;">end_date</th>
+<th style="text-align: left;">report_type</th>
+<th style="text-align: left;">submission_date</th>
+<th style="text-align: left;">jurisdiction_type</th>
+<th style="text-align: left;">authority_level</th>
+<th style="text-align: left;">coordination_type</th>
+<th style="text-align: left;">operational_role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Elise</td>
+<td style="text-align: left;">Elise</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Elise</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Entity</td>
+<td style="text-align: left;">Samantha Blake</td>
+<td style="text-align: left;">Samantha Blake</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Samantha Blake</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="check-how-many-distinct-edges" class="level4">
+<h4 class="anchored" data-anchor-id="check-how-many-distinct-edges"><span style="color:#d496d4; background:none;">2.3.1.2</span> Check how many distinct edges</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(edges_tbl<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+evidence_for     received         sent 
+        1036          584          584 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(edges_tbl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">is_inferred</th>
+<th style="text-align: left;">source</th>
+<th style="text-align: left;">target</th>
+<th style="text-align: left;">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Relationship_Suspicious_217</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Assessment_600</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3013</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Relationship_Colleagues_430</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Relationship_Friends_272</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Relationship_Colleagues_215</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="explore-frequency-distribution-of-nodes_tbl" class="level4">
+<h4 class="anchored" data-anchor-id="explore-frequency-distribution-of-nodes_tbl"><span style="color:#d496d4; background:none;">2.3.1.3</span> Explore frequency distribution of nodes_tbl</h4>
+<p>In the code chunk below, <code>ExpCatViz()</code> of SmartEDA package is used to reveal the frequency distribution of all categorical fields in <em>nodes_tbl</em> dataframe.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpCatViz</span>(nodes_tbl, <span class="at">col =</span> <span class="st">"lightblue"</span>,<span class="at">margin=</span><span class="dv">2</span>,<span class="at">Page =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`0`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dataprep_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="obsv1" class="level4 no-top-padding nursebox nurse">
+<h4 class="no-top-padding anchored" data-anchor-id="obsv1"><strong>Observation</strong></h4>
+<ul>
+<li>Node type is dominated Events (69%) followed by Relationship (25%) and Entity (6%).</li>
+<li>We need to convert some of the data types for date and time from chr to datetime format.</li>
+<li>High Missing Values Across Most Fields. Fields like reference, authority_level, and report_type are nearly all NA.</li>
+<li>Fields like monitoring_type, assessment_type, movement_type, etc. also show very sparse use. Which supports the earlier <a href="#glimpse">glimpse()</a> finding where most attribute fields are only relevant to certain subtypes (e.g.&nbsp;type = “events” and sub_type = “Communications” will have timestamp and content but other type and sub_types doesn’t have these information). We need to conditionally filter or visualize based on both type and sub_type to avoid misleading analysis. For example, don’t rely on type: assessment_type unless sub_type == “Assessment”.</li>
+</ul>
+</section>
+<section id="explore-frequency-distribution-of-edges_tbl" class="level4">
+<h4 class="anchored" data-anchor-id="explore-frequency-distribution-of-edges_tbl"><span style="color:#d496d4; background:none;">2.3.1.4</span> Explore frequency distribution of edges_tbl</h4>
+<p>Now we will reveal the frequency distribution of all categorical fields in <em>edges_tbl</em> dataframe.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ExpCatViz</span>(<span class="at">data=</span>edges_tbl,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">col=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dataprep_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="observation" class="level4 no-top-padding nursebox nurse">
+<h4 class="no-top-padding anchored" data-anchor-id="observation"><strong>Observation</strong></h4>
+<ul>
+<li><p>A large proportion (32%) of edges have missing/undefined type values (NA). But as we’ve discovered from the earlier findings in earlier <a href="#obsv1">SmartEDA of nodes_tbl</a> and <a href="#glimpse">glimpse()</a>, we know that only certain type and sub_type have all information.</p></li>
+<li><p>Significant portion of edges are evidence_for (32%), suggests more evidential or contextual links. Possibly connecting events or documents to people, vessels, or actions.</p></li>
+<li><p>Communication events (e.g., who sent/received messages) only make up 18% each of the dataset means that communication-specific analyses should filter only these types, excluding NA and evidence_for.</p></li>
+<li><p>These observations support the earlier suggestion in glimpse() to filter only communication related data for our visualisation later on.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="dataprep" class="level2">
+<h2 class="anchored" data-anchor-id="dataprep"><span style="color:#d496d4; background:none;">2.4</span> Data Preparation</h2>
+<p>After the initial <a href="#EDA">EDA</a> done in the previous chapter, we will performs the following data cleaning and data wrangling tasks:</p>
+<ul>
+<li>Extract type = “Event”, and sub_type = “communication” events since we will be focusing on intercepted communications.</li>
+<li>Convert timestamp from chr to datetime format.</li>
+<li>Extract sender and receiver links.</li>
+<li>Separate senders and receivers.</li>
+<li>Join sender-receiver pairs.</li>
+<li>Join with communication details.</li>
+<li>Join to get sender/receiver labels.</li>
+<li>Join to get entity type from sub_type.</li>
+<li>Save the result for further analysis and visualisation usage.</li>
+</ul>
+<section id="extract-communication-events-with-timestamps" class="level3">
+<h3 class="anchored" data-anchor-id="extract-communication-events-with-timestamps"><span style="color:#d496d4; background:none;">2.4.1</span> Extract communication events with timestamps</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>comm_events <span class="ot">&lt;-</span> nodes_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Event"</span>, sub_type <span class="sc">==</span> <span class="st">"Communication"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_events))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 39%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">sub_type</th>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">monitoring_type</th>
+<th style="text-align: left;">findings</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">assessment_type</th>
+<th style="text-align: left;">results</th>
+<th style="text-align: left;">movement_type</th>
+<th style="text-align: left;">destination</th>
+<th style="text-align: left;">enforcement_type</th>
+<th style="text-align: left;">outcome</th>
+<th style="text-align: left;">activity_type</th>
+<th style="text-align: right;">participants</th>
+<th style="text-align: left;">thing_collected</th>
+<th style="text-align: left;">reference</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">time</th>
+<th style="text-align: left;">friendship_type</th>
+<th style="text-align: left;">permission_type</th>
+<th style="text-align: left;">start_date</th>
+<th style="text-align: left;">end_date</th>
+<th style="text-align: left;">report_type</th>
+<th style="text-align: left;">submission_date</th>
+<th style="text-align: left;">jurisdiction_type</th>
+<th style="text-align: left;">authority_level</th>
+<th style="text-align: left;">coordination_type</th>
+<th style="text-align: left;">operational_role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_1</td>
+<td style="text-align: left;">2040-10-01 08:09:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Hey The Intern, it’s The Lookout! Just spotted a pod of dolphins near the eastern point this morning. They were so playful! If you’re free this weekend, the migratory birds are starting to arrive too. Let me know if you want to join for some birdwatching!</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_2</td>
+<td style="text-align: left;">2040-10-01 08:10:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Hey The Lookout, The Intern here! I’d absolutely love to join you for birdwatching this weekend! Those dolphins sound amazing. What time were you thinking? I’ll bring my new binoculars that Mrs.&nbsp;Money helped me pick out.</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_5</td>
+<td style="text-align: left;">2040-10-01 08:16:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, it’s The Intern. Just checking in to see what tasks you need help with today. Also, I’ll be birdwatching with The Lookout this weekend. Should I reschedule if you need me for anything?</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_6</td>
+<td style="text-align: left;">2040-10-01 08:19:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Boss, it’s Mrs.&nbsp;Money. I’ve reviewed our operational funding for the upcoming projects. Need to discuss allocation priorities before our meeting with The Middleman next week. Are you available tomorrow afternoon?</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;">Event_Communication_7</td>
+<td style="text-align: left;">2040-10-01 08:21:00</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, this is Boss. I’m available tomorrow at 3 PM to discuss funding allocations. Bring the updated projections for our tourism ventures. We need to ensure everything looks legitimate before meeting The Middleman next week.</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="extract-necessary-fields" class="level3">
+<h3 class="anchored" data-anchor-id="extract-necessary-fields"><span style="color:#d496d4; background:none;">2.4.2</span> Extract necessary fields</h3>
+<p>We’ll use <code>id</code>, <code>timestamp</code> and <code>content</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>comm_events <span class="ot">&lt;-</span> comm_events <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="at">timestamp =</span> timestamp, <span class="at">content =</span> content)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_events))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_1</td>
+<td style="text-align: left;">2040-10-01 08:09:00</td>
+<td style="text-align: left;">Hey The Intern, it’s The Lookout! Just spotted a pod of dolphins near the eastern point this morning. They were so playful! If you’re free this weekend, the migratory birds are starting to arrive too. Let me know if you want to join for some birdwatching!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_2</td>
+<td style="text-align: left;">2040-10-01 08:10:00</td>
+<td style="text-align: left;">Hey The Lookout, The Intern here! I’d absolutely love to join you for birdwatching this weekend! Those dolphins sound amazing. What time were you thinking? I’ll bring my new binoculars that Mrs.&nbsp;Money helped me pick out.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_5</td>
+<td style="text-align: left;">2040-10-01 08:16:00</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, it’s The Intern. Just checking in to see what tasks you need help with today. Also, I’ll be birdwatching with The Lookout this weekend. Should I reschedule if you need me for anything?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_6</td>
+<td style="text-align: left;">2040-10-01 08:19:00</td>
+<td style="text-align: left;">Boss, it’s Mrs.&nbsp;Money. I’ve reviewed our operational funding for the upcoming projects. Need to discuss allocation priorities before our meeting with The Middleman next week. Are you available tomorrow afternoon?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_7</td>
+<td style="text-align: left;">2040-10-01 08:21:00</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, this is Boss. I’m available tomorrow at 3 PM to discuss funding allocations. Bring the updated projections for our tourism ventures. We need to ensure everything looks legitimate before meeting The Middleman next week.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="convert-timestamp-from-chr-to-datetime-format" class="level3">
+<h3 class="anchored" data-anchor-id="convert-timestamp-from-chr-to-datetime-format"><span style="color:#d496d4; background:none;">2.4.3</span> Convert timestamp from chr to datetime format</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>comm_events <span class="ot">&lt;-</span> comm_events <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">timestamp =</span> <span class="fu">ymd_hms</span>(timestamp))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_events))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_1</td>
+<td style="text-align: left;">2040-10-01 08:09:00</td>
+<td style="text-align: left;">Hey The Intern, it’s The Lookout! Just spotted a pod of dolphins near the eastern point this morning. They were so playful! If you’re free this weekend, the migratory birds are starting to arrive too. Let me know if you want to join for some birdwatching!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_2</td>
+<td style="text-align: left;">2040-10-01 08:10:00</td>
+<td style="text-align: left;">Hey The Lookout, The Intern here! I’d absolutely love to join you for birdwatching this weekend! Those dolphins sound amazing. What time were you thinking? I’ll bring my new binoculars that Mrs.&nbsp;Money helped me pick out.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_5</td>
+<td style="text-align: left;">2040-10-01 08:16:00</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, it’s The Intern. Just checking in to see what tasks you need help with today. Also, I’ll be birdwatching with The Lookout this weekend. Should I reschedule if you need me for anything?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Event_Communication_6</td>
+<td style="text-align: left;">2040-10-01 08:19:00</td>
+<td style="text-align: left;">Boss, it’s Mrs.&nbsp;Money. I’ve reviewed our operational funding for the upcoming projects. Need to discuss allocation priorities before our meeting with The Middleman next week. Are you available tomorrow afternoon?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Event_Communication_7</td>
+<td style="text-align: left;">2040-10-01 08:21:00</td>
+<td style="text-align: left;">Mrs.&nbsp;Money, this is Boss. I’m available tomorrow at 3 PM to discuss funding allocations. Bring the updated projections for our tourism ventures. We need to ensure everything looks legitimate before meeting The Middleman next week.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="filter-edges-for-sender-and-receiver" class="level3">
+<h3 class="anchored" data-anchor-id="filter-edges-for-sender-and-receiver"><span style="color:#d496d4; background:none;">2.4.3</span> Filter edges for sender and receiver</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>comm_edges <span class="ot">&lt;-</span> edges_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"sent"</span>, <span class="st">"received"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(source, target, type)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_edges))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">source</th>
+<th style="text-align: left;">target</th>
+<th style="text-align: left;">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_331</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_334</td>
+<td style="text-align: left;">sent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_529</td>
+<td style="text-align: left;">sent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="separate-and-rename" class="level3">
+<h3 class="anchored" data-anchor-id="separate-and-rename"><span style="color:#d496d4; background:none;">2.4.4</span> Separate and rename</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>senders <span class="ot">&lt;-</span> comm_edges <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"sent"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sender =</span> source, <span class="at">message_id =</span> target)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>receivers <span class="ot">&lt;-</span> comm_edges <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"received"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">receiver =</span> target, <span class="at">message_id =</span> source)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="join-sender-and-receiver-info" class="level3">
+<h3 class="anchored" data-anchor-id="join-sender-and-receiver-info"><span style="color:#d496d4; background:none;">2.4.5</span> Join sender and receiver info</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>comm_pairs <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(senders, receivers, <span class="at">by =</span> <span class="st">"message_id"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_pairs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 32%">
+<col style="width: 9%">
+<col style="width: 28%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sender</th>
+<th style="text-align: left;">message_id</th>
+<th style="text-align: left;">type.x</th>
+<th style="text-align: left;">receiver</th>
+<th style="text-align: left;">type.y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">received</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_331</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">received</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_334</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">received</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_529</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">received</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="combine-with-communication-details" class="level3">
+<h3 class="anchored" data-anchor-id="combine-with-communication-details"><span style="color:#d496d4; background:none;">2.4.6</span> Combine with communication details</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> comm_pairs <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(comm_events, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"message_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 1%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sender</th>
+<th style="text-align: left;">message_id</th>
+<th style="text-align: left;">type.x</th>
+<th style="text-align: left;">receiver</th>
+<th style="text-align: left;">type.y</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 10:48:00</td>
+<td style="text-align: left;">Hey Kelly, it’s Sam. This permit approval seems fishy. Could you get details on who signed off on it while you’re at the harbor? I need to understand these ‘special access corridors’ before my meeting with Elise tomorrow.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-07 08:11:00</td>
+<td style="text-align: left;">Hey Sam, it’s Kelly! Got some photos of those crates - definitely marked ‘fragile’ and ‘handle with care.’ Neptune’s crew is being super secretive. They’re using special loading equipment I’ve never seen before. See you at 7 for birdwatching!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_331</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:45:00</td>
+<td style="text-align: left;">Haacklee Harbor, this is Nadia Conti. I need to cancel the special access corridor arrangements for Nemo Reef immediately. Plans have changed due to unforeseen circumstances. Destroy all related documentation. I’ll contact you when we’re ready to proceed with alternative locations.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_334</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:49:00</td>
+<td style="text-align: left;">This is Nadia Conti. My cancellation was due to scheduling conflicts with our tourism development initiatives. I wasn’t aware of any permit approvals. I’ll submit revised documentation for alternative sustainable tourism proposals next week.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_529</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-08 08:18:00</td>
+<td style="text-align: left;">Liam, Nadia here. Need your services urgently. Investigation brewing around Nemo Reef permits. Double your usual fee if you can ensure Harbor Master remains cooperative through next week. Meet at the usual place tomorrow, 10PM.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="join-entity-labels-for-sender-and-receiver" class="level3">
+<h3 class="anchored" data-anchor-id="join-entity-labels-for-sender-and-receiver"><span style="color:#d496d4; background:none;">2.4.7</span> Join entity labels for sender and receiver</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>entity_labels <span class="ot">&lt;-</span> nodes_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">"Entity"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, label, sub_type)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(entity_labels))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: left;">sub_type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Elise</td>
+<td style="text-align: left;">Elise</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Samantha Blake</td>
+<td style="text-align: left;">Samantha Blake</td>
+<td style="text-align: left;">Person</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="combine-everything" class="level3">
+<h3 class="anchored" data-anchor-id="combine-everything"><span style="color:#d496d4; background:none;">2.4.7</span> Combine everything</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(entity_labels, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"sender"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sender_label =</span> label, <span class="at">sender_type =</span> sub_type) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(entity_labels, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"receiver"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">receiver_label =</span> label, <span class="at">receiver_type =</span> sub_type)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 64%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 3%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sender</th>
+<th style="text-align: left;">message_id</th>
+<th style="text-align: left;">type.x</th>
+<th style="text-align: left;">receiver</th>
+<th style="text-align: left;">type.y</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">sender_label</th>
+<th style="text-align: left;">sender_type</th>
+<th style="text-align: left;">receiver_label</th>
+<th style="text-align: left;">receiver_type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 10:48:00</td>
+<td style="text-align: left;">Hey Kelly, it’s Sam. This permit approval seems fishy. Could you get details on who signed off on it while you’re at the harbor? I need to understand these ‘special access corridors’ before my meeting with Elise tomorrow.</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-07 08:11:00</td>
+<td style="text-align: left;">Hey Sam, it’s Kelly! Got some photos of those crates - definitely marked ‘fragile’ and ‘handle with care.’ Neptune’s crew is being super secretive. They’re using special loading equipment I’ve never seen before. See you at 7 for birdwatching!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_331</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:45:00</td>
+<td style="text-align: left;">Haacklee Harbor, this is Nadia Conti. I need to cancel the special access corridor arrangements for Nemo Reef immediately. Plans have changed due to unforeseen circumstances. Destroy all related documentation. I’ll contact you when we’re ready to proceed with alternative locations.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">Location</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_334</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:49:00</td>
+<td style="text-align: left;">This is Nadia Conti. My cancellation was due to scheduling conflicts with our tourism development initiatives. I wasn’t aware of any permit approvals. I’ll submit revised documentation for alternative sustainable tourism proposals next week.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">Organization</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_529</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-08 08:18:00</td>
+<td style="text-align: left;">Liam, Nadia here. Need your services urgently. Investigation brewing around Nemo Reef permits. Double your usual fee if you can ensure Harbor Master remains cooperative through next week. Meet at the usual place tomorrow, 10PM.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Person</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="derive-weekday-and-hour-of-the-day-fields" class="level3">
+<h3 class="anchored" data-anchor-id="derive-weekday-and-hour-of-the-day-fields"><span style="color:#d496d4; background:none;">2.4.8</span> Derive weekday and hour of the day fields</h3>
+<p>Step 1: Deriving <em>weekday</em> and <em>hour of day</em> fields</p>
+<p>Create two new fields namely <em>weekday</em> and <em>hour</em>. In this step, we will write a function to perform the task.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>make_hr_wkday <span class="ot">&lt;-</span> <span class="cf">function</span>(timestamp) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  real_times <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(timestamp)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">weekday =</span> <span class="fu">weekdays</span>(real_times),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> <span class="fu">hour</span>(real_times)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dt)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Step 2: Deriving the communication tibble data frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>weekday_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Sunday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Friday"</span>, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Thursday"</span>,<span class="st">"Wednesday"</span>,<span class="st">"Tuesday"</span>,  <span class="st">"Monday"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">as.Date</span>(timestamp),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">weekday =</span> <span class="fu">factor</span>(<span class="fu">weekdays</span>(timestamp), <span class="at">levels =</span> weekday_levels),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> <span class="fu">factor</span>(<span class="fu">hour</span>(timestamp), <span class="at">levels =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">23</span>),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">week =</span> <span class="fu">isoweek</span>(timestamp),</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">week_label =</span> <span class="fu">case_when</span>(</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">isoweek</span>(timestamp) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">isoweek</span>(timestamp)) <span class="sc">~</span> <span class="st">"Week 1"</span>,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">isoweek</span>(timestamp) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">isoweek</span>(timestamp)) <span class="sc">~</span> <span class="st">"Week 2"</span>,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beside extracting the necessary data into <em>attacks</em> data frame, <code>mutate()</code> of <strong>dplyr</strong> package is used to convert <em>weekday</em> and <em>hour</em> fields into <strong>factor</strong> so they’ll be ordered when plotting</p>
+</div>
+</div>
+<p>Table below shows the tidy tibble table after processing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 59%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sender</th>
+<th style="text-align: left;">message_id</th>
+<th style="text-align: left;">type.x</th>
+<th style="text-align: left;">receiver</th>
+<th style="text-align: left;">type.y</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">sender_label</th>
+<th style="text-align: left;">sender_type</th>
+<th style="text-align: left;">receiver_label</th>
+<th style="text-align: left;">receiver_type</th>
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">weekday</th>
+<th style="text-align: left;">hour</th>
+<th style="text-align: right;">week</th>
+<th style="text-align: left;">week_label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 10:48:00</td>
+<td style="text-align: left;">Hey Kelly, it’s Sam. This permit approval seems fishy. Could you get details on who signed off on it while you’re at the harbor? I need to understand these ‘special access corridors’ before my meeting with Elise tomorrow.</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">2040-10-05</td>
+<td style="text-align: left;">Friday</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-01 08:13:00</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">2040-10-01</td>
+<td style="text-align: left;">Monday</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-07 08:11:00</td>
+<td style="text-align: left;">Hey Sam, it’s Kelly! Got some photos of those crates - definitely marked ‘fragile’ and ‘handle with care.’ Neptune’s crew is being super secretive. They’re using special loading equipment I’ve never seen before. See you at 7 for birdwatching!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">2040-10-07</td>
+<td style="text-align: left;">Sunday</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_331</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:45:00</td>
+<td style="text-align: left;">Haacklee Harbor, this is Nadia Conti. I need to cancel the special access corridor arrangements for Nemo Reef immediately. Plans have changed due to unforeseen circumstances. Destroy all related documentation. I’ll contact you when we’re ready to proceed with alternative locations.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Haacklee Harbor</td>
+<td style="text-align: left;">Location</td>
+<td style="text-align: left;">2040-10-05</td>
+<td style="text-align: left;">Friday</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_334</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05 09:49:00</td>
+<td style="text-align: left;">This is Nadia Conti. My cancellation was due to scheduling conflicts with our tourism development initiatives. I wasn’t aware of any permit approvals. I’ll submit revised documentation for alternative sustainable tourism proposals next week.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Oceanus City Council</td>
+<td style="text-align: left;">Organization</td>
+<td style="text-align: left;">2040-10-05</td>
+<td style="text-align: left;">Friday</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Event_Communication_529</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-08 08:18:00</td>
+<td style="text-align: left;">Liam, Nadia here. Need your services urgently. Investigation brewing around Nemo Reef permits. Double your usual fee if you can ensure Harbor Master remains cooperative through next week. Meet at the usual place tomorrow, 10PM.</td>
+<td style="text-align: left;">Nadia Conti</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Liam Thorne</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">2040-10-08</td>
+<td style="text-align: left;">Monday</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: left;">Week 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="save-to-csv" class="level3">
+<h3 class="anchored" data-anchor-id="save-to-csv"><span style="color:#d496d4; background:none;">2.4.9</span> Save to CSV</h3>
+<p>For the purpose of this project, we will extract out to CSV so the rest of the group can work with this cleaned data!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(comm_full, <span class="st">"data/communications_full.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/reefwhispers\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,19 @@
+---
+title: "User Guide"
+author: "ReefWhispers Team"
+date: "June 29, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    prefer-html: true
+    navigation:
+      scrollToTop: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+**WIP**

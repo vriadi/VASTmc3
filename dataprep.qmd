@@ -1,0 +1,327 @@
+---
+title: "Data Preparation"
+author: "ReefWhispers Team"
+date: "June 13, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    prefer-html: true
+    navigation:
+      scrollToTop: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+# [1]{style="color:#d496d4; background:none;"} Analytical Toolkit: RStudio
+
+RStudio and Quarto are used as the primary analytical tools for this challenge. The data will be analyzed and visualized using the **tidyverse** suite and advanced network visualization packages to explore the knowledge graph and temporal communication dynamics.
+
+::: callout-note
+# Install [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html){target="_blank"} package
+
+Before we get started, it is important for us to ensure that the required R packages have been installed. If you have yet to install pacman, install it by typing below in the Console:
+
+```{r}
+#| code-fold: true
+#| eval: false
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("pacman")
+```
+:::
+
+We then load the following R packages using the `pacman::p_load()` function:
+
+```{r}
+#| code-fold: true
+pacman::p_load(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,
+               SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)
+```
+
+# [2]{style="color:#d496d4; background:none;"} Data
+
+The core dataset is a knowledge graph derived from radio communications intercepted over a two-week period on Oceanus. Each node in the graph represents an entity such as a person, vessel, pseudonym, or organization. Edges represent interactions or co-occurrences in communications. Edge attributes include timestamp, topic, message type, and possible pseudonym use.
+
+Supplementary information from the story given on the Mini Challenge page includes:
+
+-   Entity roles and affiliations (e.g., Green Guardians, Sailor Shift's crew).
+
+-   Known pseudonyms (e.g., “Boss”, “The Lookout”).
+
+-   Historical involvement in illicit activities (e.g., Nadia Conti).
+
+Refer to the data description details in [Appendix A](#appendixa)
+
+## [2.1]{style="color:#d496d4; background:none;"} Load the Data
+
+```{r}
+graph_data <- fromJSON("data/MC3_graph.json")
+schema_data <- fromJSON("data/MC3_schema.json")
+```
+
+## [2.2]{style="color:#d496d4; background:none;"} Check the Data
+
+### [2.2.1]{style="color:#d496d4; background:none;"} graph_data
+
+```{r}
+#| code-fold: true
+glimpse(graph_data)
+```
+
+### [4.2.2]{style="color:#d496d4; background:none;"} schema_data
+
+```{r}
+#| code-fold: true
+glimpse(schema_data)
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {#glimpse .no-top-padding}
+
+-   Each data set are already split to nodes and edges thus we will extract the edges and nodes to their own tables.
+-   There are a lot of NA values because only certain types have certain information. For example type = "events" and sub_type = "Communications" will have timestamp and content.
+-   Since the focus is recorded intercepted radio communications over the last two weeks, we will also focus on Communications records.
+-   We also need to clean and convert some of the data types (e.g Convert timestamp from chr to datetime format)
+
+Let's explore each edges and nodes!
+:::
+
+## [2.3]{style="color:#d496d4; background:none;"} Extracting the edges and nodes tables
+
+First we need to extract the nodes and links tibble data frames using `as_tibble()` of **tibble** package package into two separate tibble dataframes called *nodes_tbl* and *edges_tbl* respectively.
+
+```{r}
+nodes_tbl <- as_tibble(graph_data$nodes)
+edges_tbl <- as_tibble(graph_data$edges)
+```
+
+### [2.3.1]{style="color:#d496d4; background:none;"} Initial EDA {#EDA}
+
+#### [2.3.1.1]{style="color:#d496d4; background:none;"} Check how many distinct nodes
+
+```{r}
+#| code-fold: true
+table(nodes_tbl$type)
+```
+
+```{r}
+#| code-fold: true
+kable(head(nodes_tbl))
+```
+
+#### [2.3.1.2]{style="color:#d496d4; background:none;"} Check how many distinct edges
+
+```{r}
+#| code-fold: true
+table(edges_tbl$type)
+```
+
+```{r}
+#| code-fold: true
+kable(head(edges_tbl))
+```
+
+#### [2.3.1.3]{style="color:#d496d4; background:none;"} Explore frequency distribution of nodes_tbl
+
+In the code chunk below, `ExpCatViz()` of SmartEDA package is used to reveal the frequency distribution of all categorical fields in *nodes_tbl* dataframe.
+
+```{r}
+#| code-fold: true
+#| fig-height: 26
+#| fig-width: 10
+ExpCatViz(nodes_tbl, col = "lightblue",margin=2,Page = c(7,2))
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {#obsv1 .no-top-padding}
+
+-   Node type is dominated Events (69%) followed by Relationship (25%) and Entity (6%).
+-   We need to convert some of the data types for date and time from chr to datetime format.
+-   High Missing Values Across Most Fields. Fields like reference, authority_level, and report_type are nearly all NA.
+-   Fields like monitoring_type, assessment_type, movement_type, etc. also show very sparse use. Which supports the earlier [glimpse()](#glimpse) finding where most attribute fields are only relevant to certain subtypes (e.g. type = "events" and sub_type = "Communications" will have timestamp and content but other type and sub_types doesn't have these information). We need to conditionally filter or visualize based on both type and sub_type to avoid misleading analysis. For example, don’t rely on type: assessment_type unless sub_type == "Assessment".
+:::
+
+#### [2.3.1.4]{style="color:#d496d4; background:none;"} Explore frequency distribution of edges_tbl
+
+Now we will reveal the frequency distribution of all categorical fields in *edges_tbl* dataframe.
+
+```{r}
+#| code-fold: true
+ExpCatViz(data=edges_tbl,
+          col="lightblue")
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {.no-top-padding}
+
+-   A large proportion (32%) of edges have missing/undefined type values (NA). But as we've discovered from the earlier findings in earlier [SmartEDA of nodes_tbl](#obsv1) and [glimpse()](#glimpse), we know that only certain type and sub_type have all information.
+
+-   Significant portion of edges are evidence_for (32%), suggests more evidential or contextual links. Possibly connecting events or documents to people, vessels, or actions.
+
+-   Communication events (e.g., who sent/received messages) only make up 18% each of the dataset means that communication-specific analyses should filter only these types, excluding NA and evidence_for.
+
+-   These observations support the earlier suggestion in glimpse() to filter only communication related data for our visualisation later on.
+:::
+
+# [3]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
+
+After the initial [EDA](#EDA) done in the previous chapter, we will performs the following data cleaning and data wrangling tasks:
+
+-   Extract type = "Event", and sub_type = "communication" events since we will be focusing on intercepted communications.
+-   Convert timestamp from chr to datetime format.
+-   Extract sender and receiver links.
+-   Separate senders and receivers.
+-   Join sender-receiver pairs.
+-   Join with communication details.
+-   Join to get sender/receiver labels.
+-   Join to get entity type from sub_type.
+-   Save the result for further analysis and visualisation usage.
+
+## [3.1]{style="color:#d496d4; background:none;"} Extract communication events with timestamps
+
+```{r}
+comm_events <- nodes_tbl %>%
+  filter(type == "Event", sub_type == "Communication")
+
+kable(head(comm_events))
+```
+
+## [3.2]{style="color:#d496d4; background:none;"} Extract necessary fields
+
+We'll use `id`, `timestamp` and `content`
+
+```{r}
+comm_events <- comm_events %>%
+  select(id, timestamp = timestamp, content = content)
+
+kable(head(comm_events))
+```
+
+## [3.3]{style="color:#d496d4; background:none;"} Convert timestamp from chr to datetime format
+
+```{r}
+comm_events <- comm_events %>%
+  mutate(timestamp = ymd_hms(timestamp))
+
+kable(head(comm_events))
+```
+
+## [3.4]{style="color:#d496d4; background:none;"} Filter edges for sender and receiver
+
+```{r}
+comm_edges <- edges_tbl %>%
+  filter(type %in% c("sent", "received")) %>%
+  select(source, target, type)
+
+kable(head(comm_edges))
+```
+
+## [3.5]{style="color:#d496d4; background:none;"} Separate and rename
+
+```{r}
+senders <- comm_edges %>%
+  filter(type == "sent") %>%
+  rename(sender = source, message_id = target)
+
+receivers <- comm_edges %>%
+  filter(type == "received") %>%
+  rename(receiver = target, message_id = source)
+```
+
+## [3.6]{style="color:#d496d4; background:none;"} Join sender and receiver info
+
+```{r}
+comm_pairs <- inner_join(senders, receivers, by = "message_id")
+
+kable(head(comm_pairs))
+```
+
+## [3.7]{style="color:#d496d4; background:none;"} Combine with communication details
+
+```{r}
+comm_full <- comm_pairs %>%
+  left_join(comm_events, by = c("message_id" = "id"))
+
+kable(head(comm_full))
+```
+
+## [3.8]{style="color:#d496d4; background:none;"} Join entity labels for sender and receiver
+
+```{r}
+entity_labels <- nodes_tbl %>%
+  filter(type == "Entity") %>%
+  select(id, label, sub_type)
+
+kable(head(entity_labels))
+```
+
+## [3.9]{style="color:#d496d4; background:none;"} Combine everything
+
+```{r}
+comm_full <- comm_full %>%
+  left_join(entity_labels, by = c("sender" = "id")) %>%
+  rename(sender_label = label, sender_type = sub_type) %>%
+  left_join(entity_labels, by = c("receiver" = "id")) %>%
+  rename(receiver_label = label, receiver_type = sub_type)
+
+kable(head(comm_full))
+```
+
+## [3.10]{style="color:#d496d4; background:none;"} Derive weekday and hour of the day fields
+
+Step 1: Deriving *weekday* and *hour of day* fields
+
+Create two new fields namely *weekday* and *hour*. In this step, we will write a function to perform the task.
+
+```{r}
+#| code-fold: true
+make_hr_wkday <- function(timestamp) {
+  real_times <- ymd_hms(timestamp)
+  dt <- data.table(
+    weekday = weekdays(real_times),
+    hour = hour(real_times)
+  )
+  return(dt)
+}
+```
+
+Step 2: Deriving the communication tibble data frame
+
+```{r}
+weekday_levels <- c("Sunday", "Saturday", "Friday", 
+                    "Thursday","Wednesday","Tuesday",  "Monday")
+
+comm_full <- comm_full %>%
+  mutate(
+    date = as.Date(timestamp),
+    weekday = factor(weekdays(timestamp), levels = weekday_levels),
+    hour = factor(hour(timestamp), levels = 0:23),
+    week = isoweek(timestamp),
+    week_label = case_when(
+      isoweek(timestamp) == min(isoweek(timestamp)) ~ "Week 1",
+      isoweek(timestamp) == max(isoweek(timestamp)) ~ "Week 2",
+      TRUE ~ "Other")
+  )
+```
+
+::: callout-note
+Beside extracting the necessary data into *attacks* data frame, `mutate()` of **dplyr** package is used to convert *weekday* and *hour* fields into **factor** so they'll be ordered when plotting
+:::
+
+Table below shows the tidy tibble table after processing.
+
+```{r}
+kable(head(comm_full))
+```
+
+## [3.10]{style="color:#d496d4; background:none;"} Save to CSV
+
+For the purpose of this project, we will extract out to CSV so the rest of the group can work with this cleaned data!
+
+```{r}
+#| eval: false
+write_csv(comm_full, "data/communications_full.csv")
+```

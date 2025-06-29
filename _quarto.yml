@@ -4,6 +4,7 @@ project:
 website:
   title: "Reef Whispers"
   site-url: "https://reefwhispers.netlify.app/"
+  bread-crumbs: false
   sidebar:
     background: "#181d31"
     logo: "images/ReefWhisperLogo.jpg"
@@ -27,13 +28,13 @@ website:
         text: Storyboard
       #- href: prototype.html
       #  text: Prototype
-      - #href: dataprep.html 
+      - href: dataprep.html 
         icon: check-circle
         text: Data Preparation
       - section: ShinyApp
         contents:
           - icon: book
-            #href: userguide.html
+            href: userguide.html
             text: User Guide
           - icon: clock-history
             href: app1.html 
@@ -47,7 +48,7 @@ website:
         
     tools:
       - icon: house-fill
-        href: "https://reefwhispers.netlify.app/"
+        href: index.html
         text: Home
       - icon: github
         href: "https://github.com/vriadi/VASTmc3"

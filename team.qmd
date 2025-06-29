@@ -14,7 +14,7 @@ execute:
 The ReefWhisper Team consist of a team of 3 from Singapore Management University's Master of IT in Business (Data Science & Analytics)
 
 :::::: columns
-::: {.column width="33%" align="center"}
+::: {.column width="24%" align="center"}
 ![](images/VR.jpeg){width="100%"}
 
 **Vanessa Riadi**\
@@ -22,7 +22,11 @@ The ReefWhisper Team consist of a team of 3 from Singapore Management University
 Project Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.
 :::
 
-::: {.column width="33%" align="center"}
+::: {.column width="2%" align="center"}
+
+:::
+
+::: {.column width="24%" align="center"}
 ![](images/Hoa.jpeg){width="100%"}
 
 **Nguyen Phuong Hoa**\
@@ -30,11 +34,19 @@ Project Manager, Data Analyst, and Automation Specialist with a diverse experien
 Earned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive.
 :::
 
-::: {.column width="33%" align="center"}
+::: {.column width="2%" align="center"}
+
+:::
+
+::: {.column width="24%" align="center"}
 ![](images/Summer.jpeg){width="100%"}
 
 **Nguyen Nguyen Ha (Summer)**\
 [LinkedIn](https://www.linkedin.com/in/nguyen-ha-nguyen-552752208/)\
 Operation Analyst and Top 5% of RMIT'24 graduating students from all programs.
+:::
+
+::: {.column width="24%" align="center"}
+
 :::
 ::::::
