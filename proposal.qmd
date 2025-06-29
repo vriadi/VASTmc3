@@ -16,13 +16,13 @@ execute:
   freeze: true
 ---
 
-# 1. Motivation {#motivation}
+# [1]{style="color:#d496d4; background:none;"} Motivation {#motivation}
 
 This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.
 
 Led by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story.
 
-# 2. Objectives
+# [2]{style="color:#d496d4; background:none;"} Objectives
 
 The objective of this report is to analyze intercepted radio communications over a two-week period to uncover patterns, relationships, and potentially illicit activities among people and vessels operating in Oceanus. Using a knowledge graph and visual analytics, the investigation aims to:
 
@@ -33,7 +33,7 @@ The objective of this report is to analyze intercepted radio communications over
 
 The ultimate goal is to assist Clepper in gaining actionable insights into key actors, their interactions, and suspicious behaviors within the Oceanus network.
 
-# 3. Data
+# [3]{style="color:#d496d4; background:none;"} Data
 
 The primary dataset for this project is a knowledge graph constructed from intercepted radio communications collected over a two-week period in Oceanus. In this graph, each node represents an entity—such as a person, vessel, pseudonym, or organization—while the edges represent interactions or co-occurrences in communications. Each edge carries contextual attributes such as the timestamp, message topic, communication type, and potential pseudonym use.
 
@@ -41,9 +41,9 @@ Additional contextual data from the Mini Challenge background supports the analy
 
 Refer to the [reference](#reference) for a detailed breakdown of the dataset.
 
-# 4. Methodology & Analytical Approach
+# [4]{style="color:#d496d4; background:none;"} Methodology & Analytical Approach
 
-## 4.1. Data Preparation & EDA
+## [4.1]{style="color:#d496d4; background:none;"} Data Preparation & EDA
 
 For this project, the following approaches will be taken by the team:
 
@@ -55,7 +55,7 @@ For this project, the following approaches will be taken by the team:
 -   **Standardizing Entity Labels:** Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.
 -   **Enhancing with Time Features:** Deriving fields like weekday, hour, and week group for temporal analysis.
 
-## 4.2. Temporal Pattern & Influence Network Analysis
+## [4.2]{style="color:#d496d4; background:none;"} Temporal Pattern & Influence Network Analysis
 
 This is to solve **Q1a–c**: Daily communication trends, how they evolve over time, and identification of influence hubs.
 
@@ -66,7 +66,7 @@ Techniques and outputs include:
 -   **Influence Network Graphs:** Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).
 -   **Insights into Influence:** Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.
 
-## 4.3. Relationship Clusters & Pseudonym Mapping
+## [4.3]{style="color:#d496d4; background:none;"} Relationship Clusters & Pseudonym Mapping
 
 This is to solve:
 
@@ -80,7 +80,7 @@ Key methods include:
 -   **Pseudonym Detection:** Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.
 -   **Clustered Network with Alias Highlighting:** Annotating group-level graphs with nodes styled by pseudonym or known identity.
 
-## 4.4. Time Series Analysis and Social Network graph
+## [4.4]{style="color:#d496d4; background:none;"} Time Series Analysis and Social Network graph
 
 This is to solve **Q4a–b**: Analyse Nadia Conti's time-level communications and networks to investigate if she is operating an illicit activity in Oceanus.
 
@@ -93,7 +93,7 @@ Highlights of the investigation:
 -   **Event Linkage:** Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.
 -   **Classification of Action Types:** Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.
 
-# 5. Prototype
+# [5]{style="color:#d496d4; background:none;"} Prototype
 
 The prototype is splitted as follows:
 
@@ -103,13 +103,13 @@ The prototype is splitted as follows:
 
 For detail, please refer to [Prototype tab](prototype.html)
 
-# 6. Storyboard
+# [6]{style="color:#d496d4; background:none;"} Storyboard
 
 To support our investigation, we have designed and developed a prototype that visually outlines the structure of the R Shiny Application. This storyboard illustrates both the user interface (UI) layout and the corresponding server-side logic, offering a clear representation of how shareholders in Oceanus interact with the visual analytics workflow.
 
 For detail, please refer to [Storyboard page](storyboard.html)
 
-# 7. Packages
+# [7]{style="color:#d496d4; background:none;"} Packages
 
 To leverage the investigation, the following R packages has been used:
 
@@ -131,7 +131,6 @@ To leverage the investigation, the following R packages has been used:
 -   forcats
 -   ggrepel
 
-# 8. Reference {#reference}
+# [8]{style="color:#d496d4; background:none;"} Reference {#reference}
 
 [MC 3 Data Description](MC3_data_description.pdf){target="_blank"}
-
