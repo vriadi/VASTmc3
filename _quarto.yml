@@ -45,11 +45,11 @@ website:
           - section: Time Series Analysis and Social Network graph
             icon: graph-up
             contents:
-              - href: app3-overview.qmd
+              - href: app3-overview.html
                 text: Overview
-              - href: app3-keywords.qmd
+              - href: app3-keywords.html
                 text: Keyword Insights
-              - href: app3-timeline.qmd
+              - href: app3-timeline.html
                 text: Nadia’s Timeline
         
     tools:
