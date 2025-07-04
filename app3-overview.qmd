@@ -1,0 +1,38 @@
+---
+title: "Temporal Pattern and Communication Network"
+format:
+  html:
+    toc: false
+    prefer-html: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+```{=html}
+<style>
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Adjust this for aspect ratio (e.g., 75% = 4:3, 56.25% = 16:9) */
+    overflow: hidden;
+  }
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
+<div class="iframe-container">
+  <iframe 
+    src="https://vriadi.shinyapps.io/reefwhispers_app3-overview/" 
+    title="CMAP-RSI Explorer">
+  </iframe>
+</div>
+```
