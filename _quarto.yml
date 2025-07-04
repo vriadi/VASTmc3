@@ -42,9 +42,15 @@ website:
           - icon: virus2
             href: app2.html 
             text: Communication Clusters and Pseudonym
-          - icon: graph-up
-            href: app3.html 
-            text: Time Series Analysis and Social Network graph
+          - section: Time Series Analysis and Social Network graph
+            icon: graph-up
+            contents:
+              - href: app3-overview.qmd
+                text: Overview
+              - href: app3-keywords.qmd
+                text: Keyword Insights
+              - href: app3-timeline.qmd
+                text: Nadia’s Timeline
         
     tools:
       - icon: house-fill
