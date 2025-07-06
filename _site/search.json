@@ -161,5 +161,29 @@
     "title": "About",
     "section": "",
     "text": "About this siteasdfasdfasdf {TEST asd}"
+  },
+  {
+    "objectID": "app3-conclusion.html",
+    "href": "app3-conclusion.html",
+    "title": "Time Series Analysis and Social Network graph",
+    "section": "",
+    "text": "1. Communication Patterns\n\n62% of messages were received by Nadia, with the rest sent—suggesting her central but reactive role.\nTemporal concentration: High frequency around Oct 8–9, notably around 8–11 AM, correlates with coordination hours for logistics and surveillance.\n\n2. Message Timeline by Event Type\n\nNadia’s messages largely relate to Permits, followed by Construction and Patrol — domains critical to legitimizing and shielding site activities.\nSpike in Permit + Construction messages on Oct 8 aligns with surveillance and vessel movement around Nemo Reef.\n\n3. Keyword Analysis (Oct 8)\n\nFrequent terms: \"equipment\", \"foundation\", \"payment\", \"modified\", \"meeting\", \"document\", \"marina\".\nSuggestive of covert preparation: approvals, underwater foundation work, coordination, and movement.\n\n4. Network Analysis\n\nNadia is the central hub, receiving and sending messages to key players (Neptune, Elise, Davis, Miesel Shipping).\nDirectionality shows she’s not just a participant but the orchestrator, funneling information between entities.\n\n5. Timeline of External Evidence\n\nOct 5–9: Several independent surveillance reports and assessments verify:\nMako’s suspicious proximity\nUnauthorized underwater construction\nRedirected patrol schedules\nElise & Nadia exchanges confirming documentation and coordination\n\n\n\nYes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
+    "crumbs": [
+      "ShinyApp",
+      "Time Series Analysis and Social Network graph",
+      "Investigation Conclusion"
+    ]
+  },
+  {
+    "objectID": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
+    "href": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
+    "title": "Time Series Analysis and Social Network graph",
+    "section": "",
+    "text": "Yes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
+    "crumbs": [
+      "ShinyApp",
+      "Time Series Analysis and Social Network graph",
+      "Investigation Conclusion"
+    ]
   }
 ]

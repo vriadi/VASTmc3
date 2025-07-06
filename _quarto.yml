@@ -51,6 +51,8 @@ website:
                 text: Keyword Insights
               - href: app3-timeline.html
                 text: Nadia’s Timeline
+              - href: app3-conclusion.qmd
+                text: Investigation Conclusion
         
     tools:
       - icon: house-fill
