@@ -1,74 +1,69 @@
 [
   {
-    "objectID": "proposal.html",
-    "href": "proposal.html",
-    "title": "Project Proposal",
+    "objectID": "app3-conclusion.html",
+    "href": "app3-conclusion.html",
+    "title": "Temporal Pattern and Communication Network",
     "section": "",
-    "text": "This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.\nLed by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "proposal.html#data-preparation-eda",
-    "href": "proposal.html#data-preparation-eda",
-    "title": "Project Proposal",
-    "section": "4.1 Data Preparation & EDA",
-    "text": "4.1 Data Preparation & EDA\nFor this project, the following approaches will be taken by the team:\n\nExploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges.\nExtracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble.\nFiltering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content.\nIdentifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format.\nMerging Communication Metadata: Joining timestamps and content to each sender–receiver pair.\nStandardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.\nEnhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "proposal.html#temporal-pattern-influence-network-analysis",
-    "href": "proposal.html#temporal-pattern-influence-network-analysis",
-    "title": "Project Proposal",
-    "section": "4.2 Temporal Pattern & Influence Network Analysis",
-    "text": "4.2 Temporal Pattern & Influence Network Analysis\nThis is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs.\nTechniques and outputs include:\n\nTime Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.\nWeek-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.\nInfluence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).\nInsights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "proposal.html#relationship-clusters-pseudonym-mapping",
-    "href": "proposal.html#relationship-clusters-pseudonym-mapping",
-    "title": "Project Proposal",
-    "section": "4.3 Relationship Clusters & Pseudonym Mapping",
-    "text": "4.3 Relationship Clusters & Pseudonym Mapping\nThis is to solve:\n\nQ2a–b: Who interacts frequently and which groups emerge?\nQ3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities?\n\nKey methods include:\n\nGraph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.\nTopic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.\nPseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.\nClustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "proposal.html#time-series-analysis-and-social-network-graph",
-    "href": "proposal.html#time-series-analysis-and-social-network-graph",
-    "title": "Project Proposal",
-    "section": "4.4 Time Series Analysis and Social Network graph",
-    "text": "4.4 Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus.\nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.",
-    "crumbs": [
-      "Proposal"
-    ]
-  },
-  {
-    "objectID": "storyboard.html",
-    "href": "storyboard.html",
-    "title": "Storyboard",
-    "section": "",
-    "text": "1 Temporal Pattern and Communication Network\nThe first app, Temporal Pattern and Communication Network, will be based on Part 2 - Vanessa’s Take Home Exercise 2. Focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in Chapter 4. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\n\n\n2 Communication Clusters and Pseudonyms\nThe second app, Communication Clusters and Pseudonyms, will be based on Part 2 - Communication Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\n\n\n3 Time Series Analysis and Social Network Graph\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
-    "crumbs": [
-      "Storyboard"
-    ]
-  },
-  {
-    "objectID": "app2.html",
-    "href": "app2.html",
-    "title": "Communication Cluster and Pseudonym",
-    "section": "",
-    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.",
+    "text": "1. Communication Patterns\n\n62% of messages were received by Nadia, with the rest sent—suggesting her central but reactive role.\nTemporal concentration: High frequency around Oct 8–9, notably around 8–11 AM, correlates with coordination hours for logistics and surveillance.\n\n2. Message Timeline by Event Type\n\nNadia’s messages largely relate to Permits, followed by Construction and Patrol — domains critical to legitimizing and shielding site activities.\nSpike in Permit + Construction messages on Oct 8 aligns with surveillance and vessel movement around Nemo Reef.\n\n3. Keyword Analysis (Oct 8)\n\nFrequent terms: \"equipment\", \"foundation\", \"payment\", \"modified\", \"meeting\", \"document\", \"marina\".\nSuggestive of covert preparation: approvals, underwater foundation work, coordination, and movement.\n\n4. Network Analysis\n\nNadia is the central hub, receiving and sending messages to key players (Neptune, Elise, Davis, Miesel Shipping).\nDirectionality shows she’s not just a participant but the orchestrator, funneling information between entities.\n\n5. Timeline of External Evidence\n\nOct 5–9: Several independent surveillance reports and assessments verify:\nMako’s suspicious proximity\nUnauthorized underwater construction\nRedirected patrol schedules\nElise & Nadia exchanges confirming documentation and coordination\n\n\n\nYes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
     "crumbs": [
       "ShinyApp",
-      "Communication Clusters and Pseudonym"
+      "Time Series Analysis and Social Network graph",
+      "Investigation Conclusion"
     ]
+  },
+  {
+    "objectID": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
+    "href": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
+    "title": "Temporal Pattern and Communication Network",
+    "section": "",
+    "text": "Yes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
+    "crumbs": [
+      "ShinyApp",
+      "Time Series Analysis and Social Network graph",
+      "Investigation Conclusion"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this siteasdfasdfasdf {TEST asd}"
+  },
+  {
+    "objectID": "app3.html",
+    "href": "app3.html",
+    "title": "Time Series Analysis and Social Network graph",
+    "section": "",
+    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration."
+  },
+  {
+    "objectID": "app1.html",
+    "href": "app1.html",
+    "title": "Temporal Pattern and Communication Network",
+    "section": "",
+    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
+    "crumbs": [
+      "ShinyApp",
+      "Temporal Pattern and Communication Network"
+    ]
+  },
+  {
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "About The Team",
+    "section": "",
+    "text": "The ReefWhisper Team consist of a team of 3 from Singapore Management University’s Master of IT in Business (Data Science & Analytics)\n\n\n\nVanessa Riadi\nLinkedIn\nProject Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.\n\n\n\n\nNguyen Phuong Hoa\nLinkedIn\nEarned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive.\n\n\n\n\nNguyen Nguyen Ha (Summer)\nLinkedIn\nOperation Analyst and Top 5% of RMIT’24 graduating students from all programs.",
+    "crumbs": [
+      "Team"
+    ]
+  },
+  {
+    "objectID": "prototype.html",
+    "href": "prototype.html",
+    "title": "Prototype",
+    "section": "",
+    "text": "Work In Progress"
   },
   {
     "objectID": "dataprep.html",
@@ -121,69 +116,74 @@
     ]
   },
   {
-    "objectID": "prototype.html",
-    "href": "prototype.html",
-    "title": "Prototype",
+    "objectID": "app2.html",
+    "href": "app2.html",
+    "title": "Communication Cluster and Pseudonym",
     "section": "",
-    "text": "Work In Progress"
-  },
-  {
-    "objectID": "team.html",
-    "href": "team.html",
-    "title": "About The Team",
-    "section": "",
-    "text": "The ReefWhisper Team consist of a team of 3 from Singapore Management University’s Master of IT in Business (Data Science & Analytics)\n\n\n\nVanessa Riadi\nLinkedIn\nProject Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries.\n\n\n\n\nNguyen Phuong Hoa\nLinkedIn\nEarned a Bachelor’s degree in Finance (High Distinction) and one year of experience in a Vietnamese top bank’s front office as a Corporate Relationship Executive.\n\n\n\n\nNguyen Nguyen Ha (Summer)\nLinkedIn\nOperation Analyst and Top 5% of RMIT’24 graduating students from all programs.",
+    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration.",
     "crumbs": [
-      "Team"
+      "ShinyApp",
+      "Communication Clusters and Pseudonym"
     ]
   },
   {
-    "objectID": "app1.html",
-    "href": "app1.html",
-    "title": "Temporal Pattern and Communication Network",
+    "objectID": "storyboard.html",
+    "href": "storyboard.html",
+    "title": "Storyboard",
     "section": "",
-    "text": "Analyzing daily communication trends, how they evolve over time, and identification of influence hubs.",
+    "text": "1 Temporal Pattern and Communication Network\nThe first app, Temporal Pattern and Communication Network, will be based on Part 2 - Vanessa’s Take Home Exercise 2. Focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in Chapter 4. It will be focusing on:\n\nIdentifying temporal patterns in communications.\nRevealing relationships and influence among entities (people, vessels, groups).\n\n\n\n2 Communication Clusters and Pseudonyms\nThe second app, Communication Clusters and Pseudonyms, will be based on Part 2 - Communication Cluster and Pseudonym: Hoa’s Take Home Exercise 2. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web. It will be focusing on:\n\nUncovering interactions and relationships between vessels and individuals in the network.\nIdentifying tightly knit groups and inferring the dominant topics of their discussions.\nDetecting the use of pseudonyms and linking them back to real identities.\nExploring how visual analytics can help expose common identities disguised under multiple aliases.\n\n\n\n3 Time Series Analysis and Social Network Graph\nThe third app, Time Series Analysis and Social Network Graph, will be based on Part 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:\n\nDetermining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.\nSummarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.\n\nThis app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network.",
     "crumbs": [
-      "ShinyApp",
-      "Temporal Pattern and Communication Network"
+      "Storyboard"
     ]
   },
   {
-    "objectID": "app3.html",
-    "href": "app3.html",
-    "title": "Time Series Analysis and Social Network graph",
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "Project Proposal",
     "section": "",
-    "text": "Identifying closely-associated groups, their predominant topics, and pseudonym usage & exploration."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this siteasdfasdfasdf {TEST asd}"
-  },
-  {
-    "objectID": "app3-conclusion.html",
-    "href": "app3-conclusion.html",
-    "title": "Time Series Analysis and Social Network graph",
-    "section": "",
-    "text": "1. Communication Patterns\n\n62% of messages were received by Nadia, with the rest sent—suggesting her central but reactive role.\nTemporal concentration: High frequency around Oct 8–9, notably around 8–11 AM, correlates with coordination hours for logistics and surveillance.\n\n2. Message Timeline by Event Type\n\nNadia’s messages largely relate to Permits, followed by Construction and Patrol — domains critical to legitimizing and shielding site activities.\nSpike in Permit + Construction messages on Oct 8 aligns with surveillance and vessel movement around Nemo Reef.\n\n3. Keyword Analysis (Oct 8)\n\nFrequent terms: \"equipment\", \"foundation\", \"payment\", \"modified\", \"meeting\", \"document\", \"marina\".\nSuggestive of covert preparation: approvals, underwater foundation work, coordination, and movement.\n\n4. Network Analysis\n\nNadia is the central hub, receiving and sending messages to key players (Neptune, Elise, Davis, Miesel Shipping).\nDirectionality shows she’s not just a participant but the orchestrator, funneling information between entities.\n\n5. Timeline of External Evidence\n\nOct 5–9: Several independent surveillance reports and assessments verify:\nMako’s suspicious proximity\nUnauthorized underwater construction\nRedirected patrol schedules\nElise & Nadia exchanges confirming documentation and coordination\n\n\n\nYes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
+    "text": "This project is developed as part of the VAST Mini Challenge 2025. The chosen topic is Mini-Challenge 3, which focuses on the investigation of rising tensions and suspicious activities in Oceanus—an island community undergoing economic and regulatory transformations. Following crackdowns on illegal fishing, many suspects are believed to have redirected their interests into the tourism sector, potentially exploiting it for hidden agendas.\nLed by investigative journalist Clepper Jessen, the case revolves around intercepted radio communications tied to the temporary closure of Nemo Reef. These communications hint at expedited approvals, pseudonyms, and covert logistics involving public officials, influential families, and celebrities such as Sailor Shift. Our task is to apply novel visual analytics approaches to decode patterns, relationships, and suspicious behaviors hidden in these interactions to help uncover the truth behind Oceanus’s unfolding story.",
     "crumbs": [
-      "ShinyApp",
-      "Time Series Analysis and Social Network graph",
-      "Investigation Conclusion"
+      "Proposal"
     ]
   },
   {
-    "objectID": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
-    "href": "app3-conclusion.html#conclusion-do-the-visual-findings-support-cleppers-suspicion",
-    "title": "Time Series Analysis and Social Network graph",
-    "section": "",
-    "text": "Yes. Strongly.\n\nThe alignment between Nadia’s peaks in communication, permit-handling, and confirmed movement/construction at Nemo Reef (despite her claiming cancellation) supports Clepper’s suspicion.\nEven without direct messages showing illicit orders, visual analytics indicate:\n\nNadia controlled logistics, timelines, and access\nDelegated riskier operations (e.g., payment, surveillance diversion) to others\nObfuscated true operations under legal cover (permits)",
+    "objectID": "proposal.html#data-preparation-eda",
+    "href": "proposal.html#data-preparation-eda",
+    "title": "Project Proposal",
+    "section": "4.1 Data Preparation & EDA",
+    "text": "4.1 Data Preparation & EDA\nFor this project, the following approaches will be taken by the team:\n\nExploring Graph Structure: Understanding the types, subtypes, and attributes of nodes and edges.\nExtracting & Tidying Tables: Converting nodes and edges into tabular tibbles using jsonlite and tibble.\nFiltering Communication Events: Isolating only Event nodes with subtype Communication, which contain timestamps and message content.\nIdentifying Sender–Receiver Relationships: Filtering edge types for “sent” and “received” and reshaping into a unified format.\nMerging Communication Metadata: Joining timestamps and content to each sender–receiver pair.\nStandardizing Entity Labels: Resolving pseudonyms and inconsistent naming using the node label and sub_typefields.\nEnhancing with Time Features: Deriving fields like weekday, hour, and week group for temporal analysis.",
     "crumbs": [
-      "ShinyApp",
-      "Time Series Analysis and Social Network graph",
-      "Investigation Conclusion"
+      "Proposal"
+    ]
+  },
+  {
+    "objectID": "proposal.html#temporal-pattern-influence-network-analysis",
+    "href": "proposal.html#temporal-pattern-influence-network-analysis",
+    "title": "Project Proposal",
+    "section": "4.2 Temporal Pattern & Influence Network Analysis",
+    "text": "4.2 Temporal Pattern & Influence Network Analysis\nThis is to solve Q1a–c: Daily communication trends, how they evolve over time, and identification of influence hubs.\nTechniques and outputs include:\n\nTime Series Visualization: Plotting communication volume by day and hour, revealing routine versus reactive patterns across the two-week timeline.\nWeek-over-Week Comparison: Faceted line and heatmap visualizations of message intensity by weekday and hour, identifying shifts during the closure of Nemo Reef.\nInfluence Network Graphs: Directed visNetwork plots mapping who contacts whom, segmented by entity types (e.g., person-to-vessel, person-to-organization).\nInsights into Influence: Identification of influential entities like “Boss,” “Green Guardians,” or “V. Miesel Shipping,” based on volume, directionality, and centrality of communications.",
+    "crumbs": [
+      "Proposal"
+    ]
+  },
+  {
+    "objectID": "proposal.html#relationship-clusters-pseudonym-mapping",
+    "href": "proposal.html#relationship-clusters-pseudonym-mapping",
+    "title": "Project Proposal",
+    "section": "4.3 Relationship Clusters & Pseudonym Mapping",
+    "text": "4.3 Relationship Clusters & Pseudonym Mapping\nThis is to solve:\n\nQ2a–b: Who interacts frequently and which groups emerge?\nQ3a–b: Who is hiding behind pseudonyms, and what can we infer about their real identities?\n\nKey methods include:\n\nGraph-Based Clustering: Using tidygraph, ggraph, and visNetwork to visualize groupings based on shared communication edges.\nTopic Labeling by Cluster: Assigning thematic labels (e.g., “Conservationists,” “Permit Brokers,” “Sailor Shift’s Crew”) based on common keywords and communication targets.\nPseudonym Detection: Mining the content column to extract frequent aliases (e.g., “The Lookout,” “Boss,” “Mrs. Money”), and mapping them to known actors via message patterns, directionality, and co-occurrence.\nClustered Network with Alias Highlighting: Annotating group-level graphs with nodes styled by pseudonym or known identity.",
+    "crumbs": [
+      "Proposal"
+    ]
+  },
+  {
+    "objectID": "proposal.html#time-series-analysis-and-social-network-graph",
+    "href": "proposal.html#time-series-analysis-and-social-network-graph",
+    "title": "Project Proposal",
+    "section": "4.4 Time Series Analysis and Social Network graph",
+    "text": "4.4 Time Series Analysis and Social Network graph\nThis is to solve Q4a–b: Analyse Nadia Conti’s time-level communications and networks to investigate if she is operating an illicit activity in Oceanus.\nHighlights of the investigation:\n\nCommunication Summary: Quantified and visualized Nadia’s sent vs. received messages, revealing her central coordination role.\nTemporal Drilldown: Daily and hourly plots showing Nadia’s communication spikes during key event dates.\nContent Analysis: Keyword extraction by date, showing shifting language from planning → construction → cover-up.\nMention Network: Built a second-degree network of conversations that mention Nadia but do not involve her directly.\nEvent Linkage: Connected Nadia’s messages to Assessment, Monitoring, and Vessel Movement events—several of which coincide with suspicious activities at Nemo Reef.\nClassification of Action Types: Coded each Nadia-related message into categories like Permit, Construction, Bribery, or CoverUp to build a visual timeline of escalating activity.",
+    "crumbs": [
+      "Proposal"
     ]
   }
 ]
