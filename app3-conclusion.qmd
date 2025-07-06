@@ -1,5 +1,5 @@
 ---
-title: "Time Series Analysis and Social Network graph"
+title: "Temporal Pattern and Communication Network"
 format:
   html:
     toc: false
