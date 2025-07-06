@@ -16,5 +16,6 @@ execute:
   freeze: true
 ---
 
+<iframe src="data/ReefWhisper Userguide.pdf" width="100%" height="800px">
 
-<iframe src="data/ReefWhisper Userguide.pdf" width="100%" height="600px"></iframe>
+</iframe>
